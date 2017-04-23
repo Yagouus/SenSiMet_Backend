@@ -3,6 +3,8 @@ package hello.storage;
 import hello.FileUploadController;
 import hello.dataTypes.Headers;
 import hello.dataTypes.Result;
+import hello.dataTypes.Sentence;
+import jdk.internal.org.objectweb.asm.tree.analysis.Analyzer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,8 +36,10 @@ public class ProcessController {
     //Removes the non selected columns from a log
     @RequestMapping(value = "/Process", method = RequestMethod.POST)
     public Result complexGreeting(String s1, String s2) {
-        System.out.println(s1);
-        System.out.println(s2);
+
+        //Process the sentences
+        new Sentence(s1);
+        new Sentence(s2);
         return null;
     }
 
