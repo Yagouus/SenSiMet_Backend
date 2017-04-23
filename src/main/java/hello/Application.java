@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 public class Application {
 
 	public static void main(String[] args) {
-		MongoJDBC mongo = new MongoJDBC();
+		//MongoJDBC mongo = new MongoJDBC();
 		SpringApplication.run(Application.class, args);
 	}
 

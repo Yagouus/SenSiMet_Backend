@@ -58,13 +58,13 @@ public class FileController {
         //Trim uri to file name
         file = file.substring(file.lastIndexOf("/") + 1, file.length());
         //Load and parse file
-        return parserCSV.getHeaders(storageService.load(file).toString());
+        return null;
     }
 
     //Removes the non selected columns from a log
     @RequestMapping(value = "/filterLog", method = RequestMethod.POST)
     public HashMap<String, ArrayList<String>> complexGreeting(@RequestParam("file") String file, Headers headers) {
-        return parserCSV.removeColumns(file, headers, storageService);
+        return null;
     }
 
 
