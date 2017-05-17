@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.002s</div>
+<div class="counter">0.001s</div>
 <p>duration</p>
 </div>
 </td>
@@ -262,7 +262,7 @@ Caused by: java.lang.ClassNotFoundException: org.apache.http.ssl.TrustStrategy
 </tr>
 <tr>
 <td class="failures">shouldUploadFile</td>
-<td>0.002s</td>
+<td>0.001s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -270,45 +270,45 @@ Caused by: java.lang.ClassNotFoundException: org.apache.http.ssl.TrustStrategy
 <div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>16:04:08.294 [Test worker] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class hello.FileUploadIntegrationTests]
-16:04:08.297 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-16:04:08.300 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-16:04:08.307 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [hello.FileUploadIntegrationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-16:04:08.314 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [hello.FileUploadIntegrationTests], using SpringBootContextLoader
-16:04:08.315 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [hello.FileUploadIntegrationTests]: class path resource [hello/FileUploadIntegrationTests-context.xml] does not exist
-16:04:08.316 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [hello.FileUploadIntegrationTests]: class path resource [hello/FileUploadIntegrationTestsContext.groovy] does not exist
-16:04:08.316 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [hello.FileUploadIntegrationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-16:04:08.316 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [hello.FileUploadIntegrationTests]: FileUploadIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-16:04:08.337 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [hello.FileUploadIntegrationTests]
-16:04:08.346 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
-16:04:08.347 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
-16:04:08.347 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
-16:04:08.353 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved classpath location [hello/] to resources [URL [file:/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello/], URL [file:/home/yagouus/IdeaProjects/BackendSenSiMet/build/resources/test/hello/], URL [file:/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/]]
-16:04:08.353 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello]
-16:04:08.353 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello] for files matching pattern [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello/*.class]
-16:04:08.355 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [/home/yagouus/IdeaProjects/BackendSenSiMet/build/resources/test/hello]
-16:04:08.355 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [/home/yagouus/IdeaProjects/BackendSenSiMet/build/resources/test/hello] for files matching pattern [/home/yagouus/IdeaProjects/BackendSenSiMet/build/resources/test/hello/*.class]
-16:04:08.355 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello]
-16:04:08.355 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello] for files matching pattern [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/*.class]
-16:04:08.356 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:hello/*.class] to resources [file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello/FileUploadIntegrationTests.class], file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello/FileUploadTests.class], file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello/GreetingControllerTests.class], file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/Application.class], file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/FileController.class], file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/FileUploadController.class]]
-16:04:08.384 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/Application.class]
-16:04:08.390 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration hello.Application for test class hello.FileUploadIntegrationTests
-16:04:08.392 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [hello.FileUploadIntegrationTests]: using defaults.
-16:04:08.395 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-16:04:08.404 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@27768b9c, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1aa94268, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@11e27014, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7fb22cc9, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6c8b72c8, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3ce1d733, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3e01626b, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@50bbc506, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6711f0eb, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@557beb75, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@60dcc98b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6e41b363]
-16:04:08.406 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [hello.FileUploadIntegrationTests]
-16:04:08.406 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [hello.FileUploadIntegrationTests]
-16:04:08.406 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [hello.FileUploadIntegrationTests]
-16:04:08.407 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [hello.FileUploadIntegrationTests]
-16:04:08.408 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@23f66b1c testClass = FileUploadIntegrationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@26a76ca testClass = FileUploadIntegrationTests, locations = '{}', classes = '{class hello.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.context.SpringBootTestContextCustomizer@1c4e68e9, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@10b9714c, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@d08e71a7, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@329bf89b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
-16:04:08.408 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [hello.FileUploadIntegrationTests]
-16:04:08.408 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [hello.FileUploadIntegrationTests]
-16:04:08.409 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@23f66b1c testClass = FileUploadIntegrationTests, testInstance = hello.FileUploadIntegrationTests@1eb2dc65, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@26a76ca testClass = FileUploadIntegrationTests, locations = '{}', classes = '{class hello.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.context.SpringBootTestContextCustomizer@1c4e68e9, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@10b9714c, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@d08e71a7, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@329bf89b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]]]].
-16:04:08.437 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
-16:04:08.437 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
-16:04:08.437 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
-16:04:08.438 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}
-16:04:08.438 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [Inlined Test Properties] PropertySource with highest search precedence
+<pre>17:13:59.454 [Test worker] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class hello.FileUploadIntegrationTests]
+17:13:59.456 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+17:13:59.460 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+17:13:59.467 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [hello.FileUploadIntegrationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+17:13:59.474 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [hello.FileUploadIntegrationTests], using SpringBootContextLoader
+17:13:59.476 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [hello.FileUploadIntegrationTests]: class path resource [hello/FileUploadIntegrationTests-context.xml] does not exist
+17:13:59.476 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [hello.FileUploadIntegrationTests]: class path resource [hello/FileUploadIntegrationTestsContext.groovy] does not exist
+17:13:59.476 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [hello.FileUploadIntegrationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+17:13:59.476 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [hello.FileUploadIntegrationTests]: FileUploadIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:13:59.499 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [hello.FileUploadIntegrationTests]
+17:13:59.508 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+17:13:59.509 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+17:13:59.509 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+17:13:59.515 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved classpath location [hello/] to resources [URL [file:/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello/], URL [file:/home/yagouus/IdeaProjects/BackendSenSiMet/build/resources/test/hello/], URL [file:/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/]]
+17:13:59.515 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello]
+17:13:59.515 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello] for files matching pattern [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello/*.class]
+17:13:59.517 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [/home/yagouus/IdeaProjects/BackendSenSiMet/build/resources/test/hello]
+17:13:59.517 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [/home/yagouus/IdeaProjects/BackendSenSiMet/build/resources/test/hello] for files matching pattern [/home/yagouus/IdeaProjects/BackendSenSiMet/build/resources/test/hello/*.class]
+17:13:59.517 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello]
+17:13:59.517 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Searching directory [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello] for files matching pattern [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/*.class]
+17:13:59.518 [Test worker] DEBUG org.springframework.core.io.support.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:hello/*.class] to resources [file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello/FileUploadIntegrationTests.class], file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello/FileUploadTests.class], file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/test/hello/GreetingControllerTests.class], file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/Application.class], file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/FileController.class], file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/FileUploadController.class]]
+17:13:59.547 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/yagouus/IdeaProjects/BackendSenSiMet/build/classes/main/hello/Application.class]
+17:13:59.554 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration hello.Application for test class hello.FileUploadIntegrationTests
+17:13:59.555 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [hello.FileUploadIntegrationTests]: using defaults.
+17:13:59.558 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+17:13:59.567 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@164bd700, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@67a012cb, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@681a20f2, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3df81892, org.springframework.test.context.transaction.TransactionalTestExecutionListener@75433bfa, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@121249d3, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2bb6e6d3, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@567747bf, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3a873a60, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3a5bb032, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@26c759d4, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4a61b80c]
+17:13:59.570 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [hello.FileUploadIntegrationTests]
+17:13:59.570 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [hello.FileUploadIntegrationTests]
+17:13:59.570 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [hello.FileUploadIntegrationTests]
+17:13:59.571 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [hello.FileUploadIntegrationTests]
+17:13:59.572 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@7bcfe228 testClass = FileUploadIntegrationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@44fb2874 testClass = FileUploadIntegrationTests, locations = '{}', classes = '{class hello.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.context.SpringBootTestContextCustomizer@6954abfa, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@45a9997d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@1595464d, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@246a360e], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]]], class annotated with @DirtiesContext [false] with mode [null].
+17:13:59.573 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [hello.FileUploadIntegrationTests]
+17:13:59.573 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [hello.FileUploadIntegrationTests]
+17:13:59.574 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@7bcfe228 testClass = FileUploadIntegrationTests, testInstance = hello.FileUploadIntegrationTests@475a6c6b, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@44fb2874 testClass = FileUploadIntegrationTests, locations = '{}', classes = '{class hello.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.context.SpringBootTestContextCustomizer@6954abfa, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@45a9997d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@1595464d, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@246a360e], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]]]].
+17:13:59.602 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+17:13:59.602 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+17:13:59.602 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+17:13:59.603 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}
+17:13:59.603 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Adding [Inlined Test Properties] PropertySource with highest search precedence
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -318,25 +318,25 @@ Caused by: java.lang.ClassNotFoundException: org.apache.http.ssl.TrustStrategy
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v1.5.2.RELEASE)
 
-2017-05-17 16:04:08.578  INFO 20611 --- [    Test worker] hello.FileUploadIntegrationTests         : Starting FileUploadIntegrationTests on Home with PID 20611 (started by yagouus in /home/yagouus/IdeaProjects/BackendSenSiMet)
-2017-05-17 16:04:08.579  INFO 20611 --- [    Test worker] hello.FileUploadIntegrationTests         : No active profile set, falling back to default profiles: default
-2017-05-17 16:04:08.687  INFO 20611 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@65b7c4bb: startup date [Wed May 17 16:04:08 CEST 2017]; root of context hierarchy
-2017-05-17 16:04:09.513  INFO 20611 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
-2017-05-17 16:04:09.519  INFO 20611 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service Tomcat
-2017-05-17 16:04:09.520  INFO 20611 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
-2017-05-17 16:04:09.569  INFO 20611 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2017-05-17 16:04:09.569  INFO 20611 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 885 ms
-2017-05-17 16:04:09.631  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
-2017-05-17 16:04:09.634  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2017-05-17 16:04:09.634  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2017-05-17 16:04:09.634  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2017-05-17 16:04:09.634  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2017-05-17 16:04:09.927  WARN 20611 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
-2017-05-17 16:04:09.929  INFO 20611 --- [    Test worker] o.apache.catalina.core.StandardService   : Stopping service Tomcat
-2017-05-17 16:04:09.936  INFO 20611 --- [    Test worker] utoConfigurationReportLoggingInitializer : 
+2017-05-17 17:13:59.743  INFO 24087 --- [    Test worker] hello.FileUploadIntegrationTests         : Starting FileUploadIntegrationTests on Home with PID 24087 (started by yagouus in /home/yagouus/IdeaProjects/BackendSenSiMet)
+2017-05-17 17:13:59.743  INFO 24087 --- [    Test worker] hello.FileUploadIntegrationTests         : No active profile set, falling back to default profiles: default
+2017-05-17 17:13:59.859  INFO 24087 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4d115384: startup date [Wed May 17 17:13:59 CEST 2017]; root of context hierarchy
+2017-05-17 17:14:00.697  INFO 24087 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2017-05-17 17:14:00.703  INFO 24087 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-05-17 17:14:00.704  INFO 24087 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-05-17 17:14:00.755  INFO 24087 --- [ost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-05-17 17:14:00.756  INFO 24087 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 900 ms
+2017-05-17 17:14:00.822  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-05-17 17:14:00.824  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-05-17 17:14:00.824  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-05-17 17:14:00.825  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-05-17 17:14:00.825  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-05-17 17:14:01.099  WARN 24087 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
+2017-05-17 17:14:01.101  INFO 24087 --- [    Test worker] o.apache.catalina.core.StandardService   : Stopping service Tomcat
+2017-05-17 17:14:01.111  INFO 24087 --- [    Test worker] utoConfigurationReportLoggingInitializer : 
 
 Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
-2017-05-17 16:04:09.943 ERROR 20611 --- [    Test worker] o.s.boot.SpringApplication               : Application startup failed
+2017-05-17 17:14:01.118 ERROR 24087 --- [    Test worker] o.s.boot.SpringApplication               : Application startup failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-4.3.7.RELEASE.jar:4.3.7.RELEASE]
@@ -426,25 +426,25 @@ Caused by: java.lang.ClassNotFoundException: org.apache.http.ssl.TrustStrategy
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v1.5.2.RELEASE)
 
-2017-05-17 16:04:09.976  INFO 20611 --- [    Test worker] hello.FileUploadIntegrationTests         : Starting FileUploadIntegrationTests on Home with PID 20611 (started by yagouus in /home/yagouus/IdeaProjects/BackendSenSiMet)
-2017-05-17 16:04:09.976  INFO 20611 --- [    Test worker] hello.FileUploadIntegrationTests         : No active profile set, falling back to default profiles: default
-2017-05-17 16:04:09.978  INFO 20611 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@54902442: startup date [Wed May 17 16:04:09 CEST 2017]; root of context hierarchy
-2017-05-17 16:04:10.204  INFO 20611 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
-2017-05-17 16:04:10.205  INFO 20611 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service Tomcat
-2017-05-17 16:04:10.205  INFO 20611 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
-2017-05-17 16:04:10.208  INFO 20611 --- [ost-startStop-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
-2017-05-17 16:04:10.208  INFO 20611 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 230 ms
-2017-05-17 16:04:10.253  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
-2017-05-17 16:04:10.254  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2017-05-17 16:04:10.254  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2017-05-17 16:04:10.254  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2017-05-17 16:04:10.254  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2017-05-17 16:04:10.315  WARN 20611 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
-2017-05-17 16:04:10.316  INFO 20611 --- [    Test worker] o.apache.catalina.core.StandardService   : Stopping service Tomcat
-2017-05-17 16:04:10.320  INFO 20611 --- [    Test worker] utoConfigurationReportLoggingInitializer : 
+2017-05-17 17:14:01.145  INFO 24087 --- [    Test worker] hello.FileUploadIntegrationTests         : Starting FileUploadIntegrationTests on Home with PID 24087 (started by yagouus in /home/yagouus/IdeaProjects/BackendSenSiMet)
+2017-05-17 17:14:01.146  INFO 24087 --- [    Test worker] hello.FileUploadIntegrationTests         : No active profile set, falling back to default profiles: default
+2017-05-17 17:14:01.147  INFO 24087 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@18e3fe57: startup date [Wed May 17 17:14:01 CEST 2017]; root of context hierarchy
+2017-05-17 17:14:01.356  INFO 24087 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2017-05-17 17:14:01.357  INFO 24087 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-05-17 17:14:01.357  INFO 24087 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-05-17 17:14:01.364  INFO 24087 --- [ost-startStop-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2017-05-17 17:14:01.364  INFO 24087 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 217 ms
+2017-05-17 17:14:01.411  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-05-17 17:14:01.412  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-05-17 17:14:01.412  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-05-17 17:14:01.412  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-05-17 17:14:01.412  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-05-17 17:14:01.492  WARN 24087 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
+2017-05-17 17:14:01.493  INFO 24087 --- [    Test worker] o.apache.catalina.core.StandardService   : Stopping service Tomcat
+2017-05-17 17:14:01.498  INFO 24087 --- [    Test worker] utoConfigurationReportLoggingInitializer : 
 
 Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
-2017-05-17 16:04:10.323 ERROR 20611 --- [    Test worker] o.s.boot.SpringApplication               : Application startup failed
+2017-05-17 17:14:01.500 ERROR 24087 --- [    Test worker] o.s.boot.SpringApplication               : Application startup failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-4.3.7.RELEASE.jar:4.3.7.RELEASE]
@@ -523,7 +523,7 @@ Caused by: java.lang.ClassNotFoundException: org.apache.http.ssl.TrustStrategy
 	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_03-Ubuntu]
 	... 66 common frames omitted
 
-2017-05-17 16:04:10.325 ERROR 20611 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@11e27014] to prepare test instance [hello.FileUploadIntegrationTests@1eb2dc65]
+2017-05-17 17:14:01.506 ERROR 24087 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@681a20f2] to prepare test instance [hello.FileUploadIntegrationTests@475a6c6b]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124) ~[spring-test-4.3.7.RELEASE.jar:4.3.7.RELEASE]
@@ -614,25 +614,25 @@ Caused by: java.lang.ClassNotFoundException: org.apache.http.ssl.TrustStrategy
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v1.5.2.RELEASE)
 
-2017-05-17 16:04:10.357  INFO 20611 --- [    Test worker] hello.FileUploadIntegrationTests         : Starting FileUploadIntegrationTests on Home with PID 20611 (started by yagouus in /home/yagouus/IdeaProjects/BackendSenSiMet)
-2017-05-17 16:04:10.357  INFO 20611 --- [    Test worker] hello.FileUploadIntegrationTests         : No active profile set, falling back to default profiles: default
-2017-05-17 16:04:10.359  INFO 20611 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5813ffa5: startup date [Wed May 17 16:04:10 CEST 2017]; root of context hierarchy
-2017-05-17 16:04:10.638  INFO 20611 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
-2017-05-17 16:04:10.639  INFO 20611 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service Tomcat
-2017-05-17 16:04:10.639  INFO 20611 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
-2017-05-17 16:04:10.643  INFO 20611 --- [ost-startStop-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
-2017-05-17 16:04:10.643  INFO 20611 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 284 ms
-2017-05-17 16:04:10.686  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
-2017-05-17 16:04:10.687  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2017-05-17 16:04:10.687  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2017-05-17 16:04:10.687  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2017-05-17 16:04:10.687  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2017-05-17 16:04:10.743  WARN 20611 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
-2017-05-17 16:04:10.743  INFO 20611 --- [    Test worker] o.apache.catalina.core.StandardService   : Stopping service Tomcat
-2017-05-17 16:04:10.746  INFO 20611 --- [    Test worker] utoConfigurationReportLoggingInitializer : 
+2017-05-17 17:14:01.539  INFO 24087 --- [    Test worker] hello.FileUploadIntegrationTests         : Starting FileUploadIntegrationTests on Home with PID 24087 (started by yagouus in /home/yagouus/IdeaProjects/BackendSenSiMet)
+2017-05-17 17:14:01.539  INFO 24087 --- [    Test worker] hello.FileUploadIntegrationTests         : No active profile set, falling back to default profiles: default
+2017-05-17 17:14:01.541  INFO 24087 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7233bdc5: startup date [Wed May 17 17:14:01 CEST 2017]; root of context hierarchy
+2017-05-17 17:14:01.797  INFO 24087 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2017-05-17 17:14:01.797  INFO 24087 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-05-17 17:14:01.798  INFO 24087 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-05-17 17:14:01.802  INFO 24087 --- [ost-startStop-1] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2017-05-17 17:14:01.802  INFO 24087 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 261 ms
+2017-05-17 17:14:01.839  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-05-17 17:14:01.840  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-05-17 17:14:01.840  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-05-17 17:14:01.840  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-05-17 17:14:01.840  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-05-17 17:14:01.896  WARN 24087 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
+2017-05-17 17:14:01.896  INFO 24087 --- [    Test worker] o.apache.catalina.core.StandardService   : Stopping service Tomcat
+2017-05-17 17:14:01.900  INFO 24087 --- [    Test worker] utoConfigurationReportLoggingInitializer : 
 
 Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
-2017-05-17 16:04:10.748 ERROR 20611 --- [    Test worker] o.s.boot.SpringApplication               : Application startup failed
+2017-05-17 17:14:01.902 ERROR 24087 --- [    Test worker] o.s.boot.SpringApplication               : Application startup failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-4.3.7.RELEASE.jar:4.3.7.RELEASE]
@@ -722,25 +722,25 @@ Caused by: java.lang.ClassNotFoundException: org.apache.http.ssl.TrustStrategy
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v1.5.2.RELEASE)
 
-2017-05-17 16:04:10.773  INFO 20611 --- [    Test worker] hello.FileUploadIntegrationTests         : Starting FileUploadIntegrationTests on Home with PID 20611 (started by yagouus in /home/yagouus/IdeaProjects/BackendSenSiMet)
-2017-05-17 16:04:10.773  INFO 20611 --- [    Test worker] hello.FileUploadIntegrationTests         : No active profile set, falling back to default profiles: default
-2017-05-17 16:04:10.774  INFO 20611 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7195302: startup date [Wed May 17 16:04:10 CEST 2017]; root of context hierarchy
-2017-05-17 16:04:10.956  INFO 20611 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
-2017-05-17 16:04:10.957  INFO 20611 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service Tomcat
-2017-05-17 16:04:10.957  INFO 20611 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
-2017-05-17 16:04:10.960  INFO 20611 --- [ost-startStop-1] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
-2017-05-17 16:04:10.960  INFO 20611 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 186 ms
-2017-05-17 16:04:10.997  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
-2017-05-17 16:04:10.998  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2017-05-17 16:04:10.998  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2017-05-17 16:04:10.998  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2017-05-17 16:04:10.998  INFO 20611 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2017-05-17 16:04:11.047  WARN 20611 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
-2017-05-17 16:04:11.047  INFO 20611 --- [    Test worker] o.apache.catalina.core.StandardService   : Stopping service Tomcat
-2017-05-17 16:04:11.049  INFO 20611 --- [    Test worker] utoConfigurationReportLoggingInitializer : 
+2017-05-17 17:14:01.923  INFO 24087 --- [    Test worker] hello.FileUploadIntegrationTests         : Starting FileUploadIntegrationTests on Home with PID 24087 (started by yagouus in /home/yagouus/IdeaProjects/BackendSenSiMet)
+2017-05-17 17:14:01.923  INFO 24087 --- [    Test worker] hello.FileUploadIntegrationTests         : No active profile set, falling back to default profiles: default
+2017-05-17 17:14:01.924  INFO 24087 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@133b94dc: startup date [Wed May 17 17:14:01 CEST 2017]; root of context hierarchy
+2017-05-17 17:14:02.093  INFO 24087 --- [    Test worker] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 0 (http)
+2017-05-17 17:14:02.093  INFO 24087 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-05-17 17:14:02.093  INFO 24087 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-05-17 17:14:02.096  INFO 24087 --- [ost-startStop-1] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2017-05-17 17:14:02.096  INFO 24087 --- [ost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 172 ms
+2017-05-17 17:14:02.134  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-05-17 17:14:02.134  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-05-17 17:14:02.134  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-05-17 17:14:02.134  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-05-17 17:14:02.135  INFO 24087 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-05-17 17:14:02.193  WARN 24087 --- [    Test worker] ationConfigEmbeddedWebApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
+2017-05-17 17:14:02.193  INFO 24087 --- [    Test worker] o.apache.catalina.core.StandardService   : Stopping service Tomcat
+2017-05-17 17:14:02.196  INFO 24087 --- [    Test worker] utoConfigurationReportLoggingInitializer : 
 
 Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
-2017-05-17 16:04:11.051 ERROR 20611 --- [    Test worker] o.s.boot.SpringApplication               : Application startup failed
+2017-05-17 17:14:02.199 ERROR 24087 --- [    Test worker] o.s.boot.SpringApplication               : Application startup failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.test.web.client.TestRestTemplate': Initialization of bean failed; nested exception is java.lang.NoClassDefFoundError: org/apache/http/ssl/TrustStrategy
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564) ~[spring-beans-4.3.7.RELEASE.jar:4.3.7.RELEASE]
@@ -819,7 +819,7 @@ Caused by: java.lang.ClassNotFoundException: org.apache.http.ssl.TrustStrategy
 	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_03-Ubuntu]
 	... 66 common frames omitted
 
-2017-05-17 16:04:11.053 ERROR 20611 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@11e27014] to prepare test instance [hello.FileUploadIntegrationTests@1e318ccc]
+2017-05-17 17:14:02.201 ERROR 24087 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@681a20f2] to prepare test instance [hello.FileUploadIntegrationTests@58bacba]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124) ~[spring-test-4.3.7.RELEASE.jar:4.3.7.RELEASE]
@@ -912,7 +912,7 @@ Caused by: java.lang.ClassNotFoundException: org.apache.http.ssl.TrustStrategy
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 2.10</a> at 17-may-2017 16:04:13</p>
+<a href="http://www.gradle.org">Gradle 2.10</a> at 17-may-2017 17:14:04</p>
 </div>
 </div>
 </body>
