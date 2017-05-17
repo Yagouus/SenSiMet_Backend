@@ -21,7 +21,7 @@ public class Sentence {
 
     public Sentence(String string) {
         setString(string);
-        Tokenize();
+        //Tokenize();
         babel();
     }
 
@@ -52,7 +52,9 @@ public class Sentence {
     public void babel() {
         Babelfy bfy = new Babelfy();
         String inputText = "BabelNet is both a multilingual encyclopedic dictionary and a semantic network";
+        System.out.println(string);
         List<SemanticAnnotation> bfyAnnotations = bfy.babelfy(inputText, Language.EN);
+        System.out.println(bfyAnnotations);
     }
 
     //SETTERS
