@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="babelfy-commons-1.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/Babelfy/lib/babelfy-commons-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/Babelfy/lib/commons-collections-3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/Babelfy/lib/commons-configuration-1.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/Babelfy/lib/commons-lang-2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/Babelfy/lib/commons-logging-1.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/Babelfy/lib/gson-2.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/Babelfy/lib/httpclient-4.3.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/Babelfy/lib/httpcore-4.3.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/Babelfy/lib/httpmime-4.3.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/Babelfy/lib/jltutils-2.0.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/Babelfy/babelfy-online-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

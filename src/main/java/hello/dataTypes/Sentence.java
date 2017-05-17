@@ -1,24 +1,28 @@
 package hello.dataTypes;
-
+import it.uniroma1.lcl.babelfy.core.Babelfy;
+import it.uniroma1.lcl.babelfy.commons.annotation.SemanticAnnotation;
+import it.uniroma1.lcl.jlt.util.Language;
 import opennlp.tools.tokenize.Tokenizer;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
+
 
 public class Sentence {
 
     private String string;
     private ArrayList<Term> terms = new ArrayList<>();
 
-    public Sentence(String string){
+    public Sentence(String string) {
         setString(string);
         Tokenize();
+        babel();
     }
 
     //Tokenize
@@ -39,10 +43,16 @@ public class Sentence {
         String[] words = tokenizer.tokenize(this.string);
 
         //Create the terms
-        for(String word : words){
+        for (String word : words) {
             this.terms.add(new Term(word));
             System.out.println(word);
         }
+    }
+
+    public void babel() {
+        Babelfy bfy = new Babelfy();
+        String inputText = "BabelNet is both a multilingual encyclopedic dictionary and a semantic network";
+        List<SemanticAnnotation> bfyAnnotations = bfy.babelfy(inputText, Language.EN);
     }
 
     //SETTERS

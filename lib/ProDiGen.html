@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<!-- saved from url=(0081)http://localhost:63342/citius/index.html?_ijt=e7bf79ghfb67m1fdtu7rpuklk0#/process -->
+<html ng-app="project" ng-controller="indexCtrl" lang="en" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+
+    <!--<base href="">--><base href=".">
+    
+    <title>ProDiGen</title>
+
+    <!--Compiled and minified AngularJS-->
+    <script src="./ProDiGen_files/angular.min.js"></script>
+    <script src="./ProDiGen_files/ng-file-upload.min.js"></script>
+    <script src="./ProDiGen_files/angular-route.js"></script>
+
+    <!--App-->
+    <script src="./ProDiGen_files/app.js"></script>
+
+    <!--Controllers-->
+    <script src="./ProDiGen_files/indexCtrl.js"></script>
+    <script src="./ProDiGen_files/uploadCtrl.js"></script>
+    <script src="./ProDiGen_files/processCtrl.js"></script>
+    <!--Services-->
+    <script src="./ProDiGen_files/postService.js"></script>
+    <script src="./ProDiGen_files/restService.js"></script>
+
+    <!--Directives-->
+    <script src="./ProDiGen_files/fileModel.js"></script>
+
+    <!--Foundation
+    <script src="vendor/what-input.js"></script>
+    <script src="vendor/foundation.min.js"></script>-->
+
+    <!--Materialize-->
+    <script src="./ProDiGen_files/jquery.js"></script>
+    <script src="./ProDiGen_files/materialize.js"></script>
+
+
+    <!--Charts.js
+    <script src="vendor/Chart.bundle.js"></script>
+    <script src="vendor/utils.js"></script>-->
+
+    <!--Styles
+    <link rel="stylesheet" href="styles/app.css"/>
+    <link rel="stylesheet" href="styles/foundation.css"/>
+    <link rel="stylesheet" href="styles/normalize.css"/>
+    <link rel="stylesheet" href="styles/pizza.css"/>-->
+    <link href="./ProDiGen_files/icon" rel="stylesheet">
+    <link rel="stylesheet" href="./ProDiGen_files/materialize.css">
+    <link rel="stylesheet" href="./ProDiGen_files/app.css">
+    <link rel="stylesheet" href="./ProDiGen_files/spinner.css">
+
+    <!--Sweet alerts-->
+    <script src="./ProDiGen_files/sweetalert2.js"></script>
+    <link rel="stylesheet" href="./ProDiGen_files/sweetalert2.css">
+
+    <!--Angular Spinners-->
+    <script src="./ProDiGen_files/angular-spinners.js"></script>
+
+</head>
+<body cz-shortcut-listen="true">
+
+
+
+<!--Body-->
+<!-- ngView:  --><div ng-view="" class="main ng-scope"><div class="row ng-scope">
+
+    <!--Main div-->
+    <div class="col s10">
+        <br>
+        <div class="container">
+            <h4 class="ng-binding"><strong> File: </strong> export </h4>
+
+            <!--Show
+            <button ng-click="processShow = !processShow" class="btn waves-effect">Process Logs</button>
+            <a ng-repeat="file in files" href="{{file}}">{{file}}</a>-->
+
+            <!--Add hierarchy row-->
+            <div class="row">
+                <br>
+                <form class="col s12 ng-pristine ng-valid ng-submitted" method="POST" enctype="multipart/form-data">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">New hierarchy</span>
+                            <div class="row">
+                                <div class="col s12">
+                                    <button class="btn waves-effect waves-light" ng-click="addHierarchy()" type="submit" name="action"><i class="material-icons left">add</i>
+                                        New hierarchy
+                                    </button>
+                                    <button class="grey btn waves-effect waves-light ng-hide" ng-click="deleteHierarchy()" type="submit" name="action" ng-show="processShow"><i class="material-icons left">delete</i>
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <!--Select column row-->
+            <div class="row ng-hide" ng-show="processShow">
+
+                <!--Buttons-->
+                <div class="col s12">
+                    <button class="btn waves-effect waves-light" ng-click="saveHierarchy()" type="submit" name="action"><i class="material-icons left">save</i>
+                        Save Hierarchy
+                    </button>
+                    <button class="grey btn waves-effect waves-light" ng-click="resetData()" type="submit" name="action"><i class="material-icons left">undo</i>
+                        Reset data
+                    </button>
+                </div>
+
+
+                <div>
+
+                    <!-- ngRepeat: (key, value) in columns --><table class="bordered col s3 ng-scope" ng-repeat="(key, value) in columns">
+                        <thead>
+                        <tr>
+                            <th class="ng-binding">FEC_REG</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <!-- ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200501" value="200501" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200501" class="ng-binding">200501</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200502" value="200502" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200502" class="ng-binding">200502</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200503" value="200503" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200503" class="ng-binding">200503</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200504" value="200504" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200504" class="ng-binding">200504</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200505" value="200505" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200505" class="ng-binding">200505</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200506" value="200506" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200506" class="ng-binding">200506</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200507" value="200507" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200507" class="ng-binding">200507</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200508" value="200508" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200508" class="ng-binding">200508</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200509" value="200509" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200509" class="ng-binding">200509</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200510" value="200510" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200510" class="ng-binding">200510</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200511" value="200511" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200511" class="ng-binding">200511</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200512" value="200512" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200512" class="ng-binding">200512</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200601" value="200601" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200601" class="ng-binding">200601</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200602" value="200602" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200602" class="ng-binding">200602</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200603" value="200603" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200603" class="ng-binding">200603</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200604" value="200604" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200604" class="ng-binding">200604</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200605" value="200605" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200605" class="ng-binding">200605</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200606" value="200606" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200606" class="ng-binding">200606</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200607" value="200607" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200607" class="ng-binding">200607</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200608" value="200608" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200608" class="ng-binding">200608</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200609" value="200609" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200609" class="ng-binding">200609</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200610" value="200610" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200610" class="ng-binding">200610</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200611" value="200611" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200611" class="ng-binding">200611</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200612" value="200612" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200612" class="ng-binding">200612</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200701" value="200701" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200701" class="ng-binding">200701</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200702" value="200702" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200702" class="ng-binding">200702</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200703" value="200703" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200703" class="ng-binding">200703</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200704" value="200704" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200704" class="ng-binding">200704</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200705" value="200705" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200705" class="ng-binding">200705</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200706" value="200706" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200706" class="ng-binding">200706</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200707" value="200707" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200707" class="ng-binding">200707</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200708" value="200708" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200708" class="ng-binding">200708</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200709" value="200709" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200709" class="ng-binding">200709</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200710" value="200710" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200710" class="ng-binding">200710</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200711" value="200711" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200711" class="ng-binding">200711</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200712" value="200712" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200712" class="ng-binding">200712</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200801" value="200801" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200801" class="ng-binding">200801</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200802" value="200802" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200802" class="ng-binding">200802</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200803" value="200803" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200803" class="ng-binding">200803</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200804" value="200804" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200804" class="ng-binding">200804</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200805" value="200805" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200805" class="ng-binding">200805</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200806" value="200806" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200806" class="ng-binding">200806</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200807" value="200807" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200807" class="ng-binding">200807</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200808" value="200808" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200808" class="ng-binding">200808</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200809" value="200809" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200809" class="ng-binding">200809</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200810" value="200810" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200810" class="ng-binding">200810</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200811" value="200811" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200811" class="ng-binding">200811</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200812" value="200812" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200812" class="ng-binding">200812</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200901" value="200901" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200901" class="ng-binding">200901</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200902" value="200902" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200902" class="ng-binding">200902</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200903" value="200903" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200903" class="ng-binding">200903</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200904" value="200904" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200904" class="ng-binding">200904</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200905" value="200905" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200905" class="ng-binding">200905</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200906" value="200906" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200906" class="ng-binding">200906</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200907" value="200907" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200907" class="ng-binding">200907</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200908" value="200908" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200908" class="ng-binding">200908</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200909" value="200909" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200909" class="ng-binding">200909</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200910" value="200910" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200910" class="ng-binding">200910</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200911" value="200911" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200911" class="ng-binding">200911</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="200912" value="200912" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="200912" class="ng-binding">200912</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201001" value="201001" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201001" class="ng-binding">201001</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201002" value="201002" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201002" class="ng-binding">201002</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201003" value="201003" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201003" class="ng-binding">201003</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201004" value="201004" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201004" class="ng-binding">201004</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201005" value="201005" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201005" class="ng-binding">201005</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201006" value="201006" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201006" class="ng-binding">201006</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201007" value="201007" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201007" class="ng-binding">201007</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201008" value="201008" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201008" class="ng-binding">201008</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201009" value="201009" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201009" class="ng-binding">201009</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201010" value="201010" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201010" class="ng-binding">201010</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201011" value="201011" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201011" class="ng-binding">201011</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201012" value="201012" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201012" class="ng-binding">201012</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201101" value="201101" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201101" class="ng-binding">201101</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201102" value="201102" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201102" class="ng-binding">201102</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201103" value="201103" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201103" class="ng-binding">201103</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201104" value="201104" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201104" class="ng-binding">201104</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201105" value="201105" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201105" class="ng-binding">201105</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201106" value="201106" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201106" class="ng-binding">201106</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201107" value="201107" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201107" class="ng-binding">201107</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201108" value="201108" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201108" class="ng-binding">201108</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201109" value="201109" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201109" class="ng-binding">201109</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201110" value="201110" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201110" class="ng-binding">201110</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201111" value="201111" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201111" class="ng-binding">201111</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201112" value="201112" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201112" class="ng-binding">201112</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201201" value="201201" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201201" class="ng-binding">201201</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201202" value="201202" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201202" class="ng-binding">201202</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201203" value="201203" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201203" class="ng-binding">201203</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201204" value="201204" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201204" class="ng-binding">201204</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201205" value="201205" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201205" class="ng-binding">201205</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201206" value="201206" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201206" class="ng-binding">201206</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201207" value="201207" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201207" class="ng-binding">201207</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201208" value="201208" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201208" class="ng-binding">201208</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201209" value="201209" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201209" class="ng-binding">201209</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201210" value="201210" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201210" class="ng-binding">201210</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201211" value="201211" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201211" class="ng-binding">201211</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201212" value="201212" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201212" class="ng-binding">201212</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201301" value="201301" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201301" class="ng-binding">201301</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201302" value="201302" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201302" class="ng-binding">201302</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201303" value="201303" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201303" class="ng-binding">201303</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201304" value="201304" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201304" class="ng-binding">201304</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201305" value="201305" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201305" class="ng-binding">201305</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201306" value="201306" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201306" class="ng-binding">201306</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201307" value="201307" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201307" class="ng-binding">201307</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201308" value="201308" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201308" class="ng-binding">201308</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201309" value="201309" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201309" class="ng-binding">201309</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201310" value="201310" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201310" class="ng-binding">201310</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201311" value="201311" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201311" class="ng-binding">201311</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201312" value="201312" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201312" class="ng-binding">201312</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201401" value="201401" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201401" class="ng-binding">201401</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201402" value="201402" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201402" class="ng-binding">201402</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201403" value="201403" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201403" class="ng-binding">201403</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201404" value="201404" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201404" class="ng-binding">201404</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201405" value="201405" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201405" class="ng-binding">201405</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201406" value="201406" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201406" class="ng-binding">201406</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201407" value="201407" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201407" class="ng-binding">201407</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201408" value="201408" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201408" class="ng-binding">201408</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201409" value="201409" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201409" class="ng-binding">201409</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201410" value="201410" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201410" class="ng-binding">201410</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201411" value="201411" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201411" class="ng-binding">201411</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201412" value="201412" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201412" class="ng-binding">201412</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201501" value="201501" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201501" class="ng-binding">201501</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201502" value="201502" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201502" class="ng-binding">201502</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201503" value="201503" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201503" class="ng-binding">201503</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201504" value="201504" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201504" class="ng-binding">201504</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201505" value="201505" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201505" class="ng-binding">201505</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201506" value="201506" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201506" class="ng-binding">201506</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201507" value="201507" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201507" class="ng-binding">201507</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201508" value="201508" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201508" class="ng-binding">201508</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201509" value="201509" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201509" class="ng-binding">201509</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201510" value="201510" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201510" class="ng-binding">201510</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201511" value="201511" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201511" class="ng-binding">201511</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201512" value="201512" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201512" class="ng-binding">201512</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201601" value="201601" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201601" class="ng-binding">201601</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201602" value="201602" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201602" class="ng-binding">201602</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201603" value="201603" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201603" class="ng-binding">201603</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201604" value="201604" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201604" class="ng-binding">201604</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201605" value="201605" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201605" class="ng-binding">201605</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201606" value="201606" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201606" class="ng-binding">201606</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201607" value="201607" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201607" class="ng-binding">201607</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201608" value="201608" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201608" class="ng-binding">201608</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201609" value="201609" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201609" class="ng-binding">201609</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201610" value="201610" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201610" class="ng-binding">201610</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201611" value="201611" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201611" class="ng-binding">201611</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201612" value="201612" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201612" class="ng-binding">201612</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201701" value="201701" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201701" class="ng-binding">201701</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="201702" value="201702" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="201702" class="ng-binding">201702</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value -->
+                        </tbody>
+                    </table><!-- end ngRepeat: (key, value) in columns --><table class="bordered col s3 ng-scope" ng-repeat="(key, value) in columns">
+                        <thead>
+                        <tr>
+                            <th class="ng-binding">ACT_ECONOMICA</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <!-- ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="00" value="00" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="00" class="ng-binding">00</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="01" value="01" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="01" class="ng-binding">01</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="02" value="02" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="02" class="ng-binding">02</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="03" value="03" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="03" class="ng-binding">03</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="05" value="05" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="05" class="ng-binding">05</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="08" value="08" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="08" class="ng-binding">08</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="10" value="10" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="10" class="ng-binding">10</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="11" value="11" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="11" class="ng-binding">11</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="12" value="12" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="12" class="ng-binding">12</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="13" value="13" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="13" class="ng-binding">13</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="14" value="14" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="14" class="ng-binding">14</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="15" value="15" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="15" class="ng-binding">15</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="16" value="16" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="16" class="ng-binding">16</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="17" value="17" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="17" class="ng-binding">17</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="18" value="18" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="18" class="ng-binding">18</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="19" value="19" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="19" class="ng-binding">19</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="20" value="20" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="20" class="ng-binding">20</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="21" value="21" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="21" class="ng-binding">21</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="22" value="22" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="22" class="ng-binding">22</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="23" value="23" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="23" class="ng-binding">23</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="24" value="24" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="24" class="ng-binding">24</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="25" value="25" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="25" class="ng-binding">25</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="26" value="26" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="26" class="ng-binding">26</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="27" value="27" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="27" class="ng-binding">27</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="28" value="28" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="28" class="ng-binding">28</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="29" value="29" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="29" class="ng-binding">29</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="30" value="30" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="30" class="ng-binding">30</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="31" value="31" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="31" class="ng-binding">31</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="32" value="32" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="32" class="ng-binding">32</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="33" value="33" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="33" class="ng-binding">33</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="34" value="34" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="34" class="ng-binding">34</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="35" value="35" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="35" class="ng-binding">35</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="36" value="36" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="36" class="ng-binding">36</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="37" value="37" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="37" class="ng-binding">37</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="38" value="38" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="38" class="ng-binding">38</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="40" value="40" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="40" class="ng-binding">40</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="41" value="41" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="41" class="ng-binding">41</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="42" value="42" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="42" class="ng-binding">42</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="43" value="43" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="43" class="ng-binding">43</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="45" value="45" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="45" class="ng-binding">45</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="46" value="46" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="46" class="ng-binding">46</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="47" value="47" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="47" class="ng-binding">47</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="49" value="49" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="49" class="ng-binding">49</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="50" value="50" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="50" class="ng-binding">50</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="51" value="51" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="51" class="ng-binding">51</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="52" value="52" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="52" class="ng-binding">52</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="53" value="53" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="53" class="ng-binding">53</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="55" value="55" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="55" class="ng-binding">55</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="56" value="56" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="56" class="ng-binding">56</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="58" value="58" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="58" class="ng-binding">58</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="59" value="59" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="59" class="ng-binding">59</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="60" value="60" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="60" class="ng-binding">60</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="61" value="61" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="61" class="ng-binding">61</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="62" value="62" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="62" class="ng-binding">62</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="63" value="63" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="63" class="ng-binding">63</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="64" value="64" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="64" class="ng-binding">64</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="65" value="65" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="65" class="ng-binding">65</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="66" value="66" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="66" class="ng-binding">66</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="67" value="67" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="67" class="ng-binding">67</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="68" value="68" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="68" class="ng-binding">68</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="69" value="69" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="69" class="ng-binding">69</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="70" value="70" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="70" class="ng-binding">70</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="71" value="71" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="71" class="ng-binding">71</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="72" value="72" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="72" class="ng-binding">72</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="73" value="73" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="73" class="ng-binding">73</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="74" value="74" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="74" class="ng-binding">74</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="75" value="75" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="75" class="ng-binding">75</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="77" value="77" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="77" class="ng-binding">77</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="78" value="78" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="78" class="ng-binding">78</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="79" value="79" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="79" class="ng-binding">79</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="80" value="80" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="80" class="ng-binding">80</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="81" value="81" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="81" class="ng-binding">81</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="82" value="82" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="82" class="ng-binding">82</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="84" value="84" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="84" class="ng-binding">84</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="85" value="85" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="85" class="ng-binding">85</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="86" value="86" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="86" class="ng-binding">86</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="87" value="87" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="87" class="ng-binding">87</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="88" value="88" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="88" class="ng-binding">88</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="90" value="90" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="90" class="ng-binding">90</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="91" value="91" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="91" class="ng-binding">91</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="92" value="92" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="92" class="ng-binding">92</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="93" value="93" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="93" class="ng-binding">93</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="94" value="94" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="94" class="ng-binding">94</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="95" value="95" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="95" class="ng-binding">95</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="96" value="96" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="96" class="ng-binding">96</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="97" value="97" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="97" class="ng-binding">97</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="99" value="99" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="99" class="ng-binding">99</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value -->
+                        </tbody>
+                    </table><!-- end ngRepeat: (key, value) in columns --><table class="bordered col s3 ng-scope" ng-repeat="(key, value) in columns">
+                        <thead>
+                        <tr>
+                            <th class="ng-binding">SEXO</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <!-- ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="1" value="1" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="1" class="ng-binding">1</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value --><tr ng-repeat="data in value" class="ng-scope">
+                            <td>
+                                <input type="checkbox" id="2" value="2" ng-click="selectFunc(key, data)" ng-checked="selectionContains(key,data) &gt; -1">
+                                <label for="2" class="ng-binding">2</label>
+                            </td>
+                        </tr><!-- end ngRepeat: data in value -->
+                        </tbody>
+                    </table><!-- end ngRepeat: (key, value) in columns -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Logs sidebar-->
+    <div class="col s2 grey lighten-3  sideright">
+
+        <!--Logs-->
+        <div class="row">
+            <div class="col s12">
+                <table class="bordered">
+                    <thead>
+                    <tr>
+                        <th>Hierarchys</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- ngRepeat: filter in createdFilters --><tr ng-repeat="filter in createdFilters" ng-click="getHierarchy(filter.id)" class="ng-scope">
+                        <td class="ng-binding">Filter n0</td>
+                    </tr><!-- end ngRepeat: filter in createdFilters -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--Process-->
+        <div class="row">
+            <div class="col s12">
+                <button class="btn waves-effect" ng-click="postHierarchies()">Process</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</div></div>
+
+
+
+
+<div class="hiddendiv common"></div></body></html>
