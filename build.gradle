@@ -42,6 +42,8 @@ dependencies {
             'lib/Babelfy/config/babelfy.properties',
             'lib/Babelfy/config/babelfy.var.properties',
             'lib/Babelfy/babelfy-online-1.0.jar')
+    files(dir: 'src/main/resources/config/babelfy.var.properties')
+    compile fileTree(dir:'lib/', include: '*.jar')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('com.jayway.jsonpath:json-path')
 }
