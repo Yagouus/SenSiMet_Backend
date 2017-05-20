@@ -14,6 +14,9 @@ public class Term {
     private CoreLabel core;            //CoreNLP token
 
     //CONSTRUCTOR
+    public Term() {
+
+    }
     public Term(String word) {
         setString(word);
     }
@@ -40,5 +43,8 @@ public class Term {
         return core;
     }
 
-
+    @Override
+    public String toString() {
+        return this.string;
+    }
 }

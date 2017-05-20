@@ -49,6 +49,9 @@ public class ProcessController {
         S1.Disambiguate();
         S2.Disambiguate();
 
+        //Show terms
+        System.out.println(S1.getTerms());
+        System.out.println(S2.getTerms());
 
         return null;
     }
