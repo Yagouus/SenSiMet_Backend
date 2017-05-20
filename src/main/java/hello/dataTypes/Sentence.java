@@ -38,10 +38,10 @@ public class Sentence {
         System.out.println("SENTENCE SETTED: " + string);
 
         //Tokenize and POS
-        Tokenize();
+        //Tokenize();
 
         //Disambiguate terms
-        Disambiguate();
+        //Disambiguate();
     }
 
     //Tokenize and dependencies

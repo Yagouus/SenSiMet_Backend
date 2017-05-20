@@ -33,13 +33,23 @@ public class ProcessController {
         this.storageService = storageService;
     }
 
-    //Removes the non selected columns from a log
+    //Calculates the resemblance between two sentences
     @RequestMapping(value = "/Process", method = RequestMethod.POST)
     public Result complexGreeting(String s1, String s2) {
 
-        //Process the sentences
-        new Sentence(s1);
-        new Sentence(s2);
+        //Init the sentences
+        Sentence S1 = new Sentence(s1);
+        Sentence S2 = new Sentence(s2);
+
+        //POS tag the sentence
+        S1.Tokenize();
+        S2.Tokenize();
+
+        //Disambiguate the terms in the sentences
+        S1.Disambiguate();
+        S2.Disambiguate();
+
+
         return null;
     }
 
