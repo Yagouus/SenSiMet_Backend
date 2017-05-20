@@ -35,6 +35,7 @@ public class Sentence {
 
         //Set the sentence string
         setString(string);
+        System.out.println("SENTENCE SETTED: " + string);
 
         //Tokenize and POS
         Tokenize();
@@ -66,19 +67,17 @@ public class Sentence {
             System.out.println(word);
         }*/
 
-        // creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution
+        //Creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution
         Properties props = new Properties();
         props.put("pos.model", "edu/stanford/nlp/models/pos-tagger/english-left3words/english-left3words-distsim.tagger");
         props.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
         StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
 
-        System.out.println(string);
-
-        // create an empty Annotation just with the given text
+        //Create an empty Annotation just with the given text
         Annotation document = new Annotation(this.string);
-        System.out.println(document);
+        System.out.println("DOCUMENT CREATED: " + document);
 
-        // run all Annotators on this text
+        //Run all Annotators on this text
         pipeline.annotate(document);
 
         List<CoreMap> sentences = document.get(CoreAnnotations.SentencesAnnotation.class);
@@ -89,10 +88,13 @@ public class Sentence {
             for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) {
                 // this is the text of the token
                 String word = token.get(CoreAnnotations.TextAnnotation.class);
+                System.out.println(word);
                 // this is the POS tag of the token
                 String pos = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+                System.out.println(pos);
                 // this is the NER label of the token
                 String ne = token.get(CoreAnnotations.NamedEntityTagAnnotation.class);
+                System.out.println(ne);
             }
 
             // this is the parse tree of the current sentence
@@ -110,8 +112,6 @@ public class Sentence {
         //Babelfy instance
         Babelfy bfy = new Babelfy();
 
-        System.out.println(string);
-
         //Call bfy API
         ArrayList<SemanticAnnotation> bfyAnnotations = (ArrayList<SemanticAnnotation>) bfy.babelfy(string, Language.EN);
 
@@ -127,7 +127,6 @@ public class Sentence {
             System.out.println("\t" + annotation.getSource());
         }
 
-        System.out.println(bfyAnnotations);
     }
 
     //SETTERS
