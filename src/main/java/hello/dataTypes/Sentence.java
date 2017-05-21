@@ -24,10 +24,10 @@ import java.util.*;
 public class Sentence {
 
     //Attributes
-    private String string;                                  //Plain text string of sentence
+    private String string;                                      //Plain text string of sentence
     private HashMap<String, Term> terms = new HashMap<>();      //Terms composing the sentence
-    private Tree tree;                                      //Tree structure of the sentence
-    private SemanticGraph dependencies;                    //Graph of the sentence dependencies
+    //private Tree tree;                                          //Tree structure of the sentence
+    private SemanticGraph dependencies;                         //Graph of the sentence dependencies
 
     //CONSTRUCTORS
     public Sentence() {
@@ -51,6 +51,9 @@ public class Sentence {
     }
 
     //GETTERS
+    public String getString() {
+        return string;
+    }
     public ArrayList<Term> getTerms() {
 
         //Result Array
@@ -60,10 +63,12 @@ public class Sentence {
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
             result.add((Term) pair.getValue());
-            it.remove(); // avoids a ConcurrentModificationException
         }
 
         return result;
+    }
+    public SemanticGraph getDependencies() {
+        return dependencies;
     }
 
     //OTHER METHODS
@@ -114,7 +119,7 @@ public class Sentence {
             }
 
             //This is the parse tree of the current sentence
-            this.tree = sentence.get(TreeCoreAnnotations.TreeAnnotation.class);
+            //this.tree = sentence.get(TreeCoreAnnotations.TreeAnnotation.class);
 
             //This is the Stanford dependency graph of the current sentence
             this.dependencies = sentence.get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);

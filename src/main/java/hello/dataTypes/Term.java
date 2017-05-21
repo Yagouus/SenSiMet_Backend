@@ -39,9 +39,6 @@ public class Term {
     public SemanticAnnotation getBfy() {
         return bfy;
     }
-    public CoreLabel getCore() {
-        return core;
-    }
 
     @Override
     public String toString() {

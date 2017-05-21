@@ -1,12 +1,7 @@
 package hello.parser;
 
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
 import hello.dataTypes.DataSet;
-import hello.dataTypes.Headers;
-import hello.persistence.MongoJDBC;
-import hello.storage.StorageService;
 import opennlp.tools.tokenize.Tokenizer;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
@@ -14,11 +9,8 @@ import opennlp.tools.tokenize.TokenizerModel;
 import java.io.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class parserCSV {
-
-    private static MongoJDBC mongo = new MongoJDBC();
 
     public static DataSet Stringify(String file) {
         String line = "";

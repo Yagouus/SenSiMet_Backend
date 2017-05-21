@@ -1,24 +1,11 @@
 package hello.storage;
 
-import hello.FileUploadController;
-import hello.dataTypes.Headers;
-import hello.dataTypes.Result;
-import hello.dataTypes.Sentence;
+import hello.dataTypes.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
 
 @RestController
 public class ProcessController {
@@ -35,7 +22,7 @@ public class ProcessController {
 
     //Calculates the resemblance between two sentences
     @RequestMapping(value = "/Process", method = RequestMethod.POST)
-    public Result complexGreeting(String s1, String s2) {
+    public Result process(String s1, String s2) {
 
         //Init the sentences
         Sentence S1 = new Sentence(s1);
@@ -53,7 +40,12 @@ public class ProcessController {
         System.out.println(S1.getTerms());
         System.out.println(S2.getTerms());
 
-        return null;
+        //Result
+        Result result = new Result(S1, S2);
+        //result.setS1(S1);
+        //result.setS2(S2);
+
+        return result;
     }
 
 
