@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Babelnet">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/BabelNet-API-3.7/babelnet-api-3.7.jar!/" />
+      <root url="file://$PROJECT_DIR$/src/main/resources/BabelNet-API-3.7/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/src/main/resources/BabelNet-API-3.7/lib" recursive="false" />
+  </library>
+</component>

@@ -2,9 +2,15 @@ package hello.storage;
 
 import hello.dataTypes.*;
 
+
+import it.uniroma1.lcl.babelnet.BabelNet;
+import it.uniroma1.lcl.babelnet.BabelSynset;
+import it.uniroma1.lcl.jlt.util.Language;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -22,7 +28,13 @@ public class ProcessController {
 
     //Calculates the resemblance between two sentences
     @RequestMapping(value = "/Process", method = RequestMethod.POST)
-    public Result process(String s1, String s2) {
+    public Result process(String s1, String s2) throws IOException {
+
+
+        BabelNet bn = BabelNet.getInstance();
+        for (BabelSynset synset : bn.getSynsets("home", Language.EN)) {
+            System.out.println("Synset ID: " + synset.getId());
+        }
 
         //Init the sentences
         Sentence S1 = new Sentence(s1);
@@ -39,6 +51,8 @@ public class ProcessController {
         //Show terms
         System.out.println(S1.getTerms());
         System.out.println(S2.getTerms());
+
+
 
         //Result
         Result result = new Result(S1, S2);

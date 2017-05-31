@@ -39,11 +39,13 @@ dependencies {
             'lib/Babelfy/lib/httpcore-4.3.3.jar',
             'lib/Babelfy/lib/httpmime-4.3.6.jar',
             'lib/Babelfy/lib/jltutils-2.0.4.jar',
-            'lib/Babelfy/config/babelfy.properties',
-            'lib/Babelfy/config/babelfy.var.properties',
             'lib/Babelfy/babelfy-online-1.0.jar')
-    files(dir: 'src/main/resources/config/babelfy.var.properties')
+
     compile fileTree(dir:'lib/', include: '*.jar')
+    compile fileTree(dir:'lib/BabelNet', include: '*')
+    compile fileTree(dir:'lib/BabelNet/lib', include: '*.jar')
+
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('com.jayway.jsonpath:json-path')
 }
