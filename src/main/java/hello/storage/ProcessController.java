@@ -5,6 +5,7 @@ import hello.dataTypes.*;
 
 import it.uniroma1.lcl.babelnet.BabelNet;
 import it.uniroma1.lcl.babelnet.BabelSynset;
+import it.uniroma1.lcl.babelnet.InvalidBabelSynsetIDException;
 import it.uniroma1.lcl.jlt.util.Language;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ProcessController {
 
     private static final String template = "Your file is, %s!";
+    public static final BabelNet bn = BabelNet.getInstance();
     private final AtomicLong counter = new AtomicLong();
 
     private final StorageService storageService;
@@ -28,21 +30,16 @@ public class ProcessController {
 
     //Calculates the resemblance between two sentences
     @RequestMapping(value = "/Process", method = RequestMethod.POST)
-    public Result process(String s1, String s2) throws IOException {
+    public Result process(String s1, String s2) throws IOException, InvalidBabelSynsetIDException {
 
-
-        BabelNet bn = BabelNet.getInstance();
-        for (BabelSynset synset : bn.getSynsets("home", Language.EN)) {
-            System.out.println("Synset ID: " + synset.getId());
-        }
 
         //Init the sentences
         Sentence S1 = new Sentence(s1);
         Sentence S2 = new Sentence(s2);
 
         //POS tag the sentence
-        S1.Tokenize();
-        S2.Tokenize();
+        //S1.Tokenize();
+        //S2.Tokenize();
 
         //Disambiguate the terms in the sentences
         S1.Disambiguate();
@@ -51,8 +48,6 @@ public class ProcessController {
         //Show terms
         System.out.println(S1.getTerms());
         System.out.println(S2.getTerms());
-
-
 
         //Result
         Result result = new Result(S1, S2);

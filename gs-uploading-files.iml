@@ -9,7 +9,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -104,5 +104,10 @@
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.24" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:2.6.1" level="project" />
     <orderEntry type="library" name="Maven: edu.stanford.nlp:stanford-corenlp:models:3.7.0" level="project" />
+    <orderEntry type="library" name="babelfy-online-1.0" level="project" />
+    <orderEntry type="library" name="babelnet-api-3.7" level="project" />
+    <orderEntry type="library" name="stanford-corenlp-3.7.0" level="project" />
+    <orderEntry type="library" name="src" level="project" />
+    <orderEntry type="library" name="stanford-corenlp-3.7.0-models" level="project" />
   </component>
 </module>

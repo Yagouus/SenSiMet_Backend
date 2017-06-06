@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="src">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/ejml-0.23-src.zip!/ejml-0.23/benchmarks/src" />
+      <root url="jar://$PROJECT_DIR$/lib/ejml-0.23-src.zip!/ejml-0.23/benchmarks/test" />
+      <root url="jar://$PROJECT_DIR$/lib/ejml-0.23-src.zip!/ejml-0.23/examples/src" />
+      <root url="jar://$PROJECT_DIR$/lib/ejml-0.23-src.zip!/ejml-0.23/examples/test" />
+      <root url="jar://$PROJECT_DIR$/lib/ejml-0.23-src.zip!/ejml-0.23/experimental/src" />
+      <root url="jar://$PROJECT_DIR$/lib/ejml-0.23-src.zip!/ejml-0.23/experimental/test" />
+      <root url="jar://$PROJECT_DIR$/lib/ejml-0.23-src.zip!/ejml-0.23/src" />
+      <root url="jar://$PROJECT_DIR$/lib/ejml-0.23-src.zip!/ejml-0.23/test" />
+    </SOURCES>
+  </library>
+</component>
