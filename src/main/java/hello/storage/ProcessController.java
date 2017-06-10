@@ -46,8 +46,8 @@ public class ProcessController {
         S2.Disambiguate();
 
         //Show terms
-        System.out.println(S1.getTerms());
-        System.out.println(S2.getTerms());
+        //System.out.println(S1.getTerms());
+        //System.out.println(S2.getTerms());
 
         //Result
         Result result = new Result(S1, S2);

@@ -15,6 +15,7 @@ import it.uniroma1.lcl.babelfy.commons.BabelfyParameters;
 import it.uniroma1.lcl.babelfy.core.Babelfy;
 import it.uniroma1.lcl.babelfy.commons.annotation.SemanticAnnotation;
 import it.uniroma1.lcl.babelnet.*;
+import it.uniroma1.lcl.babelnet.data.BabelPointer;
 import it.uniroma1.lcl.jlt.util.Language;
 import opennlp.tools.tokenize.Tokenizer;
 import opennlp.tools.tokenize.TokenizerME;
@@ -26,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
+import static it.uniroma1.lcl.babelfy.commons.BabelfyParameters.DisambiguationConstraint.DISAMBIGUATE_INPUT_FRAGMENTS_ONLY;
 import static it.uniroma1.lcl.jlt.util.Language.*;
 
 public class Sentence {
@@ -141,30 +143,31 @@ public class Sentence {
 
         //Babelfy settings
         BabelfyParameters bp = new BabelfyParameters();
-        bp.setMCS(BabelfyParameters.MCS.OFF);
+        //bp.setMCS(BabelfyParameters.MCS.OFF);
         bp.setScoredCandidates(BabelfyParameters.ScoredCandidates.TOP);
         bp.setMatchingType(BabelfyParameters.MatchingType.EXACT_MATCHING);
-        //bp.setAnnotationType(BabelfyParameters.SemanticAnnotationType.NAMED_ENTITIES);
+        bp.setAnnotationType(BabelfyParameters.SemanticAnnotationType.NAMED_ENTITIES);
 
         //Babelfy instance
         Babelfy bfy = new Babelfy(bp);
+        ArrayList<String> w = new ArrayList<>();
+        ArrayList<String> ids = new ArrayList<>();
 
         //Call bfy API
-        ArrayList<SemanticAnnotation> bfyAnnotations = (ArrayList<SemanticAnnotation>) bfy.babelfy(string, EN);
+        ArrayList<SemanticAnnotation> bfyEntities = (ArrayList<SemanticAnnotation>) bfy.babelfy(string, EN);
 
         //SOUT
-        System.out.println("DISAMBIGUATE SENTENCE: " + string);
+        System.out.println("\nDISAMBIGUATE SENTENCE: " + string);
         System.out.println("ANNOTATIONS OBTAINED: ");
-
-        ArrayList<String> ids = new ArrayList<>();
 
         //Iterate over list
         //bfyAnnotations is the result of Babelfy.babelfy() call
-        for (SemanticAnnotation annotation : bfyAnnotations) {
+        for (SemanticAnnotation annotation : bfyEntities) {
 
             //splitting the input text using the CharOffsetFragment start and end anchors
-            String frag = string.substring(annotation.getCharOffsetFragment().getStart(),
-                    annotation.getCharOffsetFragment().getEnd() + 1);
+            String frag = string.substring(annotation.getCharOffsetFragment().getStart(), annotation.getCharOffsetFragment().getEnd() + 1);
+
+            w.add(frag);
 
             if (!ids.contains(annotation.getBabelSynsetID())) {
 
@@ -175,12 +178,11 @@ public class Sentence {
                 ids.add(annotation.getBabelSynsetID());
 
                 System.out.print(frag + "\t" + annotation.getBabelSynsetID());
-                System.out.print("\t" + annotation.getBabelNetURL());
-                System.out.print("\t" + annotation.getDBpediaURL());
-                System.out.println("\t" + annotation.getSource());
+                System.out.print("\t" + annotation.getBabelNetURL() + "\n");
 
                 //Get Bablenet info
                 BabelSynset synset = ProcessController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
+                terms.get(frag).setBnt(synset);
                 System.out.println("MAIN SENSE: " + synset.getMainSense(Language.EN));
                 System.out.println("POS: " + synset.getPOS());
 
@@ -192,17 +194,55 @@ public class Sentence {
                         + edge.getPointer()+" - "
                         + edge.getBabelSynsetIDTarget());
             }*/
-
-                //Add the info to the terms contained in the sentence
-
-
+                /*BabelNet bn = BabelNet.getInstance();
+                BabelSynset by = bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
+                for(BabelSynsetIDRelation edge : by.getEdges()) {
+                    System.out.println(by.getId()+"\t"+by.getMainSense(Language.EN).getLemma()+" - "
+                            + edge.getPointer()+" - "
+                            + edge.getBabelSynsetIDTarget());
+                }*/
 
             }
-
-
-
-
         }
+
+
+        //Remove concepts from the string
+        for(String word : w){
+            string = string.replace(word, "");
+        }
+
+        bp.setAnnotationType(BabelfyParameters.SemanticAnnotationType.CONCEPTS);
+        bp.setMultiTokenExpression(false);
+        ArrayList<SemanticAnnotation> bfyConcepts = (ArrayList<SemanticAnnotation>) bfy.babelfy(string, EN);
+
+        for (SemanticAnnotation annotation : bfyConcepts) {
+
+            //splitting the input text using the CharOffsetFragment start and end anchors
+            String frag = string.substring(annotation.getCharOffsetFragment().getStart(), annotation.getCharOffsetFragment().getEnd() + 1);
+
+            w.add(frag);
+
+            if (!ids.contains(annotation.getBabelSynsetID())) {
+
+                //Set Term and BFY info
+                this.terms.put(frag, new Term(frag));
+                terms.get(frag).setBfy(annotation);
+
+                ids.add(annotation.getBabelSynsetID());
+
+                System.out.print(frag + "\t" + annotation.getBabelSynsetID());
+                System.out.print("\t" + annotation.getBabelNetURL() + "\n");
+
+                //Get Bablenet info
+                BabelSynset synset = ProcessController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
+                terms.get(frag).setBnt(synset);
+                System.out.println("MAIN SENSE: " + synset.getMainSense(Language.EN));
+                System.out.println("POS: " + synset.getPOS());
+
+            }
+        }
+
+
 
         //Tokenize
 
@@ -212,3 +252,5 @@ public class Sentence {
 
     }//Disambiguate
 }
+
+

@@ -3,6 +3,7 @@ package hello.dataTypes;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.semgraph.semgrex.SemgrexMatcher;
 import it.uniroma1.lcl.babelfy.commons.annotation.SemanticAnnotation;
+import it.uniroma1.lcl.babelnet.BabelSynset;
 
 //This class represents each word from a sentence
 //It contains the basic information and methods needed to process it
@@ -11,6 +12,7 @@ public class Term {
     //Attributes
     private String string;              //Plain text string
     private SemanticAnnotation bfy;     //Bfy disambiguation
+    private BabelSynset bnt;
     private CoreLabel core;            //CoreNLP token
 
     //CONSTRUCTOR
@@ -30,6 +32,9 @@ public class Term {
     }
     public void setCore(CoreLabel core) {
         this.core = core;
+    }
+    public void setBnt(BabelSynset bnt) {
+        this.bnt = bnt;
     }
 
     //GETTERS
