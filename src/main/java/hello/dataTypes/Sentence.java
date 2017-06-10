@@ -207,7 +207,7 @@ public class Sentence {
 
 
         //Remove concepts from the string
-        for(String word : w){
+        for (String word : w) {
             string = string.replace(word, "");
         }
 
@@ -242,9 +242,16 @@ public class Sentence {
             }
         }
 
+        for (String word : w) {
+            string = string.replace(word, "");
+        }
 
-
-        //Tokenize
+        //Tokenize the rest of the sentence
+        String[] rest = string.split(" ");
+        for (String word : rest) {
+            if (!word.isEmpty())
+                terms.put(word, new Term(word));
+        }
 
 
         //Create term
