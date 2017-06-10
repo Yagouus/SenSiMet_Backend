@@ -11,6 +11,7 @@ import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreeCoreAnnotations;
 import edu.stanford.nlp.util.CoreMap;
 import hello.storage.ProcessController;
+import it.uniroma1.lcl.babelfy.commons.BabelfyParameters;
 import it.uniroma1.lcl.babelfy.core.Babelfy;
 import it.uniroma1.lcl.babelfy.commons.annotation.SemanticAnnotation;
 import it.uniroma1.lcl.babelnet.*;
@@ -138,14 +139,24 @@ public class Sentence {
 
     public void Disambiguate() throws InvalidBabelSynsetIDException, IOException {
 
+        //Babelfy settings
+        BabelfyParameters bp = new BabelfyParameters();
+        bp.setMCS(BabelfyParameters.MCS.OFF);
+        bp.setScoredCandidates(BabelfyParameters.ScoredCandidates.TOP);
+        bp.setMatchingType(BabelfyParameters.MatchingType.EXACT_MATCHING);
+        //bp.setAnnotationType(BabelfyParameters.SemanticAnnotationType.NAMED_ENTITIES);
+
         //Babelfy instance
-        Babelfy bfy = new Babelfy();
+        Babelfy bfy = new Babelfy(bp);
 
         //Call bfy API
         ArrayList<SemanticAnnotation> bfyAnnotations = (ArrayList<SemanticAnnotation>) bfy.babelfy(string, EN);
 
         //SOUT
         System.out.println("DISAMBIGUATE SENTENCE: " + string);
+        System.out.println("ANNOTATIONS OBTAINED: ");
+
+        ArrayList<String> ids = new ArrayList<>();
 
         //Iterate over list
         //bfyAnnotations is the result of Babelfy.babelfy() call
@@ -154,16 +165,26 @@ public class Sentence {
             //splitting the input text using the CharOffsetFragment start and end anchors
             String frag = string.substring(annotation.getCharOffsetFragment().getStart(),
                     annotation.getCharOffsetFragment().getEnd() + 1);
-            System.out.print(frag + "\t" + annotation.getBabelSynsetID());
-            System.out.print("\t" + annotation.getBabelNetURL());
-            System.out.print("\t" + annotation.getDBpediaURL());
-            System.out.println("\t" + annotation.getSource());
 
-            BabelSynset synset = ProcessController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
+            if (!ids.contains(annotation.getBabelSynsetID())) {
 
-            System.out.println("MAIN SENSE: " + synset.getMainSense(Language.EN));
-            System.out.println("POS: " + synset.getPOS());
-            //System.out.println("EDGES: " + synset.getEdges());
+                //Set Term and BFY info
+                this.terms.put(frag, new Term(frag));
+                terms.get(frag).setBfy(annotation);
+
+                ids.add(annotation.getBabelSynsetID());
+
+                System.out.print(frag + "\t" + annotation.getBabelSynsetID());
+                System.out.print("\t" + annotation.getBabelNetURL());
+                System.out.print("\t" + annotation.getDBpediaURL());
+                System.out.println("\t" + annotation.getSource());
+
+                //Get Bablenet info
+                BabelSynset synset = ProcessController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
+                System.out.println("MAIN SENSE: " + synset.getMainSense(Language.EN));
+                System.out.println("POS: " + synset.getPOS());
+
+                //System.out.println("EDGES: " + synset.getEdges());
 
 
             /*for(BabelSynsetIDRelation edge : synset.getEdges()) {
@@ -172,9 +193,13 @@ public class Sentence {
                         + edge.getBabelSynsetIDTarget());
             }*/
 
-            //Add the info to the terms contained in the sentence
-            if (terms.containsKey(frag))
-                terms.get(frag).setBfy(annotation);
+                //Add the info to the terms contained in the sentence
+
+
+
+            }
+
+
 
 
         }
@@ -183,19 +208,7 @@ public class Sentence {
 
 
         //Create term
-        System.out.println(string.substring(0, bfyAnnotations.get(0).getCharOffsetFragment().getStart()));
 
-        for (int i = 0; i < bfyAnnotations.size(); i++) {
-
-            System.out.println(string.substring(bfyAnnotations.get(i).getCharOffsetFragment().getStart(),
-                    bfyAnnotations.get(i).getCharOffsetFragment().getEnd() + 1));
-
-            //splitting the input text using the CharOffsetFragment start and end anchors
-            System.out.println(string.substring(bfyAnnotations.get(i).getCharOffsetFragment().getEnd() + 1,
-                    bfyAnnotations.get(i+1).getCharOffsetFragment().getStart()));
-
-
-        }
 
     }//Disambiguate
 }
