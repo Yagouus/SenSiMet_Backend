@@ -26,6 +26,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static it.uniroma1.lcl.babelfy.commons.BabelfyParameters.DisambiguationConstraint.DISAMBIGUATE_INPUT_FRAGMENTS_ONLY;
 import static it.uniroma1.lcl.jlt.util.Language.*;
@@ -180,27 +182,13 @@ public class Sentence {
                 System.out.print(frag + "\t" + annotation.getBabelSynsetID());
                 System.out.print("\t" + annotation.getBabelNetURL() + "\n");
 
-                //Get Bablenet info
                 BabelSynset synset = ProcessController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
+                System.out.println("MAIN SENSE: " + synset.getMainSense(EN));
                 terms.get(frag).setBnt(synset);
-                System.out.println("MAIN SENSE: " + synset.getMainSense(Language.EN));
-                System.out.println("POS: " + synset.getPOS());
+                terms.get(frag).setPOS(synset.getPOS());
+                System.out.println("POS: " + terms.get(frag).getPOS());
 
-                //System.out.println("EDGES: " + synset.getEdges());
-
-
-            /*for(BabelSynsetIDRelation edge : synset.getEdges()) {
-                System.out.println(synset.getId()+"\t"+synset.getMainSense(Language.EN).getLemma()+" - "
-                        + edge.getPointer()+" - "
-                        + edge.getBabelSynsetIDTarget());
-            }*/
-                /*BabelNet bn = BabelNet.getInstance();
-                BabelSynset by = bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
-                for(BabelSynsetIDRelation edge : by.getEdges()) {
-                    System.out.println(by.getId()+"\t"+by.getMainSense(Language.EN).getLemma()+" - "
-                            + edge.getPointer()+" - "
-                            + edge.getBabelSynsetIDTarget());
-                }*/
+                getEdges(terms.get(frag));
 
             }
         }
@@ -233,11 +221,15 @@ public class Sentence {
                 System.out.print(frag + "\t" + annotation.getBabelSynsetID());
                 System.out.print("\t" + annotation.getBabelNetURL() + "\n");
 
-                //Get Bablenet info
                 BabelSynset synset = ProcessController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
+                System.out.println("MAIN SENSE: " + synset.getMainSense(EN));
+
                 terms.get(frag).setBnt(synset);
-                System.out.println("MAIN SENSE: " + synset.getMainSense(Language.EN));
-                System.out.println("POS: " + synset.getPOS());
+                terms.get(frag).setPOS(synset.getPOS());
+                System.out.println("POS: " + terms.get(frag).getPOS());
+
+                getEdges(terms.get(frag));
+
 
             }
         }
@@ -258,6 +250,55 @@ public class Sentence {
 
 
     }//Disambiguate
-}
 
+    private void getEdges(Term t) throws InvalidBabelSynsetIDException, IOException {
+        BabelSynset synset = null;
+
+        synset = ProcessController.bn.getSynset(new BabelSynsetID(t.getBfy().getBabelSynsetID()));
+
+        ArrayList<BabelSynsetIDRelation> added = new ArrayList<>();
+
+        //Set first level relations
+        //t.setBow((ArrayList<BabelSynsetIDRelation>) synset.getEdges(BabelPointer.REGION_MEMBER));
+        //t.addBow((ArrayList<BabelSynsetIDRelation>) synset.getEdges(BabelPointer.HYPERNYM));
+        //t.addBow((ArrayList<BabelSynsetIDRelation>) synset.getEdges(BabelPointer.HYPONYM));
+        //t.addBow((ArrayList<BabelSynsetIDRelation>) synset.getEdges(BabelPointer.REGION_MEMBER));
+        //t.addBow((ArrayList<BabelSynsetIDRelation>) synset.getEdges(BabelPointer.HOLONYM_MEMBER));
+
+
+        //Sense
+        //Synonym
+        //HyperHypo
+        //Gloss
+        //Semantic
+
+        for (BabelSynsetIDRelation edge : synset.getEdges()) {
+            //if (edge.getLanguage() == Language.EN && edge.getWeight() != 0.0) {
+                //  System.out.println(edge);
+                //Add second level relations
+                //added.addAll((ArrayList<BabelSynsetIDRelation>) ProcessController.bn.getSynset(new BabelSynsetID(edge.getBabelSynsetIDTarget().toString())).getEdges());
+                //}
+
+                System.out.println(synset.getId() + "\t" + synset.getMainSense(Language.EN).getLemma() + " - "
+                        + edge.getPointer() + " - "
+                        + edge.getBabelSynsetIDTarget() + " - "
+                        + edge.getLanguage());
+
+
+
+            //}
+
+            t.returnBow().add(edge);
+
+
+            //for(String form : synset.getOtherForms(Language.EN)) {
+            //  System.out.println(synset.getId()+"\t"+synset.getMainSense(Language.EN).getLemma()+" - "
+            //        + form);
+        }
+
+        //t.addBow(added);
+
+    }
+
+}
 
