@@ -1,5 +1,7 @@
 package hello.dataTypes;
 
+import java.util.ArrayList;
+
 /**
  * Created by yagouus on 23/04/17.
  */
@@ -7,6 +9,8 @@ public class Result {
 
     Sentence S1;
     Sentence S2;
+    ArrayList<Relation> relationsArrayList = new ArrayList<>();
+
 
     public Result(){
         System.out.println("Create empty result");
@@ -36,5 +40,13 @@ public class Result {
 
     public Sentence getS2() {
         return S2;
+    }
+
+    public void setRelationsArrayList(ArrayList<Relation> relationsArrayList) {
+        this.relationsArrayList = relationsArrayList;
+    }
+
+    public ArrayList<Relation> getRelationsArrayList() {
+        return relationsArrayList;
     }
 }

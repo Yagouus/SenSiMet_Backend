@@ -47,6 +47,9 @@ public class ProcessController {
         S1.Disambiguate();
         S2.Disambiguate();
 
+        //Result
+        Result result = new Result(S1, S2);
+
         //Compare terms
         for (Term t : S1.getTerms()) {
             for (Term u : S2.getTerms()) {
@@ -57,29 +60,40 @@ public class ProcessController {
 
                     //Compare edges
                     System.out.println("COMPARE: " + t.getString() + " - " + u.getString());
+                    Relation r = new Relation();
+                    r.setT1(t);
+                    r.setT2(u);
 
                     for (BabelSynsetIDRelation edge : t.returnBow()) {
                         //System.out.println(i++);
                         //BabelSynsetIDRelationComparator bc = new BabelSynsetIDRelationComparator();
                         //if(u.returnBow().contains(edge))
 
+                        r.gettBow().add(edge);
+
                         for (BabelSynsetIDRelation edge2 : u.returnBow()) {
 
 
                             if (edge.toString().equals(edge2.toString())) {
-                                System.out.println(edge + " - " + edge2);
+
+                                //System.out.println(edge + " - " + edge2);
+                                r.getcWords().add(edge);
                                 c++;
+
                             }
+                                r.gettBow().add(edge2);
 
                             i++;
                         }
                     }
 
-                    float result = c * 2 / (t.returnBow().size() + u.returnBow().size());
+                    float metric = (c) / (t.returnBow().size() + u.returnBow().size());
 
                     System.out.println("SHARED: " + c);
                     System.out.println("SIZE: " + (t.returnBow().size() + u.returnBow().size()));
-                    System.out.println("RESULT: " + c + " / " + (t.returnBow().size() + u.returnBow().size()) + " = " + result);
+                    System.out.println("RESULT: " + c + " / " + (t.returnBow().size() + u.returnBow().size()) + " = " + metric);
+
+                    result.getRelationsArrayList().add(r);
                 }
             }
         }
@@ -88,10 +102,11 @@ public class ProcessController {
         //System.out.println(S1.getTerms());
         //System.out.println(S2.getTerms());
 
-        //Result
-        Result result = new Result(S1, S2);
+
         //result.setS1(S1);
         //result.setS2(S2);
+
+
 
         return result;
     }
