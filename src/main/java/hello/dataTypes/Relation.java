@@ -42,4 +42,18 @@ public class Relation {
     public ArrayList<BabelSynsetIDRelation> getcWords() {
         return cWords;
     }
+
+    public Term getT1() {
+        return t1;
+    }
+
+    public Term getT2() {
+        return t2;
+    }
+
+    public float getMetric() {
+        return metric;
+    }
+
+
 }

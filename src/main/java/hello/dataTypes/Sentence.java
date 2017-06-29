@@ -143,6 +143,8 @@ public class Sentence {
 
     public void Disambiguate() throws InvalidBabelSynsetIDException, IOException {
 
+        String sentence = this.getString();
+
         //Babelfy settings
         BabelfyParameters bp = new BabelfyParameters();
         //bp.setMCS(BabelfyParameters.MCS.OFF);
@@ -167,7 +169,7 @@ public class Sentence {
         for (SemanticAnnotation annotation : bfyEntities) {
 
             //splitting the input text using the CharOffsetFragment start and end anchors
-            String frag = string.substring(annotation.getCharOffsetFragment().getStart(), annotation.getCharOffsetFragment().getEnd() + 1);
+            String frag = sentence.substring(annotation.getCharOffsetFragment().getStart(), annotation.getCharOffsetFragment().getEnd() + 1);
 
             w.add(frag);
 
@@ -196,17 +198,17 @@ public class Sentence {
 
         //Remove concepts from the string
         for (String word : w) {
-            string = string.replace(word, "");
+            sentence = sentence.replace(word, "");
         }
 
         bp.setAnnotationType(BabelfyParameters.SemanticAnnotationType.CONCEPTS);
         bp.setMultiTokenExpression(false);
-        ArrayList<SemanticAnnotation> bfyConcepts = (ArrayList<SemanticAnnotation>) bfy.babelfy(string, EN);
+        ArrayList<SemanticAnnotation> bfyConcepts = (ArrayList<SemanticAnnotation>) bfy.babelfy(sentence, EN);
 
         for (SemanticAnnotation annotation : bfyConcepts) {
 
             //splitting the input text using the CharOffsetFragment start and end anchors
-            String frag = string.substring(annotation.getCharOffsetFragment().getStart(), annotation.getCharOffsetFragment().getEnd() + 1);
+            String frag = sentence.substring(annotation.getCharOffsetFragment().getStart(), annotation.getCharOffsetFragment().getEnd() + 1);
 
             w.add(frag);
 
@@ -235,11 +237,11 @@ public class Sentence {
         }
 
         for (String word : w) {
-            string = string.replace(word, "");
+           sentence = sentence.replace(word, "");
         }
 
         //Tokenize the rest of the sentence
-        String[] rest = string.split(" ");
+        String[] rest = sentence.split(" ");
         for (String word : rest) {
             if (!word.isEmpty())
                 terms.put(word, new Term(word));

@@ -31,6 +31,7 @@ public class ProcessController {
     }
 
     //Calculates the resemblance between two sentences
+    @CrossOrigin
     @RequestMapping(value = "/Process", method = RequestMethod.POST)
     public Result process(String s1, String s2) throws IOException, InvalidBabelSynsetIDException {
 
@@ -55,8 +56,8 @@ public class ProcessController {
             for (Term u : S2.getTerms()) {
                 if (t.getPOS() != null && u.getPOS() != null && t.getPOS() == u.getPOS()) {
 
-                    int c = 0;
-                    int i = 0;
+                    //int c = 0;
+                    //int i = 0;
 
                     //Compare edges
                     System.out.println("COMPARE: " + t.getString() + " - " + u.getString());
@@ -69,29 +70,29 @@ public class ProcessController {
                         //BabelSynsetIDRelationComparator bc = new BabelSynsetIDRelationComparator();
                         //if(u.returnBow().contains(edge))
 
-                        r.gettBow().add(edge);
+                        //r.gettBow().add(edge);
 
                         for (BabelSynsetIDRelation edge2 : u.returnBow()) {
 
 
                             if (edge.toString().equals(edge2.toString())) {
 
-                                //System.out.println(edge + " - " + edge2);
-                                r.getcWords().add(edge);
-                                c++;
+                                System.out.println(edge + " - " + edge2);
+                                //r.getcWords().add(edge);
+                                //c++;
 
                             }
-                                r.gettBow().add(edge2);
+                                //r.gettBow().add(edge2);
 
-                            i++;
+                            //i++;
                         }
                     }
 
-                    float metric = (c) / (t.returnBow().size() + u.returnBow().size());
+                    //float metric = (c) / (t.returnBow().size() + u.returnBow().size());
 
-                    System.out.println("SHARED: " + c);
+                    //System.out.println("SHARED: " + c);
                     System.out.println("SIZE: " + (t.returnBow().size() + u.returnBow().size()));
-                    System.out.println("RESULT: " + c + " / " + (t.returnBow().size() + u.returnBow().size()) + " = " + metric);
+                    //System.out.println("RESULT: " + c + " / " + (t.returnBow().size() + u.returnBow().size()) + " = " + metric);
 
                     result.getRelationsArrayList().add(r);
                 }
