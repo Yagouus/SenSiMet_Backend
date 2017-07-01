@@ -13,8 +13,8 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
 jar {
-    baseName = 'gs-rest-service'
-    version =  '0.1.0'
+    baseName = 'sensimet-backend'
+    version =  '1.0'
 }
 
 repositories {

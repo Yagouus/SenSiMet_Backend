@@ -1,10 +1,11 @@
-package hello.storage;
+package hello;
 
 import hello.analysis.SentenceAnalyser;
 import hello.dataTypes.*;
 
 
-import hello.parser.parserCSV;
+import hello.parser.FileParser;
+import hello.storage.StorageService;
 import it.uniroma1.lcl.babelnet.BabelNet;
 import it.uniroma1.lcl.babelnet.InvalidBabelSynsetIDException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +14,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
-public class ProcessController {
+public class RESTController {
 
-    private static final String template = "Your file is, %s!";
     public static final BabelNet bn = BabelNet.getInstance();
-    private final AtomicLong counter = new AtomicLong();
 
     private final StorageService storageService;
 
     @Autowired
-    public ProcessController(StorageService storageService) {
+    public RESTController(StorageService storageService) {
         this.storageService = storageService;
     }
 
@@ -45,7 +43,7 @@ public class ProcessController {
         storageService.store(file);
 
         //Extract sentences
-        ArrayList<String> sentences = parserCSV.Stringify(storageService.load(file.getOriginalFilename()).toString());
+        ArrayList<String> sentences = FileParser.Stringify(storageService.load(file.getOriginalFilename()).toString());
 
         return SentenceAnalyser.analyse(sentences.get(0), sentences.get(1));
     }

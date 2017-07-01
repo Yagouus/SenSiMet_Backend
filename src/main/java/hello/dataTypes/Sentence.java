@@ -1,23 +1,16 @@
 package hello.dataTypes;
 
 
-import hello.storage.ProcessController;
+import hello.RESTController;
 import it.uniroma1.lcl.babelfy.commons.BabelfyParameters;
 import it.uniroma1.lcl.babelfy.core.Babelfy;
 import it.uniroma1.lcl.babelfy.commons.annotation.SemanticAnnotation;
 import it.uniroma1.lcl.babelnet.*;
 import it.uniroma1.lcl.babelnet.data.BabelPointer;
-import it.uniroma1.lcl.jlt.util.Language;
-
-import java.io.FileInputStream;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
-import static it.uniroma1.lcl.babelfy.commons.BabelfyParameters.DisambiguationConstraint.DISAMBIGUATE_INPUT_FRAGMENTS_ONLY;
 import static it.uniroma1.lcl.jlt.util.Language.*;
 
 public class Sentence {
@@ -172,7 +165,7 @@ public class Sentence {
                 System.out.print(frag + "\t" + annotation.getBabelSynsetID());
                 System.out.print("\t" + annotation.getBabelNetURL() + "\n");
 
-                BabelSynset synset = ProcessController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
+                BabelSynset synset = RESTController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
                 System.out.println("MAIN SENSE: " + synset.getMainSense(EN));
                 terms.get(frag).setBnt(synset);
                 terms.get(frag).setPOS(synset.getPOS());
@@ -211,7 +204,7 @@ public class Sentence {
                 System.out.print(frag + "\t" + annotation.getBabelSynsetID());
                 System.out.print("\t" + annotation.getBabelNetURL() + "\n");
 
-                BabelSynset synset = ProcessController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
+                BabelSynset synset = RESTController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
                 System.out.println("MAIN SENSE: " + synset.getMainSense(EN));
 
                 terms.get(frag).setBnt(synset);
@@ -244,7 +237,7 @@ public class Sentence {
     private void getEdges(Term t) throws InvalidBabelSynsetIDException, IOException {
         BabelSynset synset = null;
 
-        synset = ProcessController.bn.getSynset(new BabelSynsetID(t.getBfy().getBabelSynsetID()));
+        synset = RESTController.bn.getSynset(new BabelSynsetID(t.getBfy().getBabelSynsetID()));
 
         ArrayList<BabelSynsetIDRelation> added = new ArrayList<>();
 
@@ -266,7 +259,7 @@ public class Sentence {
             i++;
 
             System.out.println(cH.getBabelSynsetIDTarget().toString());
-            cH = ProcessController.bn.getSynset(cH.getBabelSynsetIDTarget()).getEdges(BabelPointer.HYPERNYM).get(0);
+            cH = RESTController.bn.getSynset(cH.getBabelSynsetIDTarget()).getEdges(BabelPointer.HYPERNYM).get(0);
             t.returnBow().add(cH);
 
         } while (!cH.getBabelSynsetIDTarget().toString().equals(entity));

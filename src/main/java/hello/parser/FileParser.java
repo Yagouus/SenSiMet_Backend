@@ -5,7 +5,7 @@ import java.io.*;
 
 import java.util.ArrayList;
 
-public class parserCSV {
+public class FileParser {
 
     public static ArrayList<String> Stringify(String file) {
         String line = "";
@@ -26,25 +26,5 @@ public class parserCSV {
 
         return result;
     }
-
-   /* public static void Tokenize(DataSet Data) {
-
-        //Initialize OpenNLP tokenizer
-        InputStream is = null;
-        try {
-            is = new FileInputStream("lib/en-token.bin");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        TokenizerModel model = null;
-        try {
-            model = new TokenizerModel(is);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Tokenizer tokenizer = new TokenizerME(model);
-    }*/
 
 }
