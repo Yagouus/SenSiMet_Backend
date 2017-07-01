@@ -1,7 +1,6 @@
 package hello.dataTypes;
 
 
-
 import hello.storage.ProcessController;
 import it.uniroma1.lcl.babelfy.commons.BabelfyParameters;
 import it.uniroma1.lcl.babelfy.core.Babelfy;
@@ -226,7 +225,7 @@ public class Sentence {
         }
 
         for (String word : w) {
-           sentence = sentence.replace(word, "");
+            sentence = sentence.replace(word, "");
         }
 
         //Tokenize the rest of the sentence
@@ -257,50 +256,62 @@ public class Sentence {
         //t.addBow((ArrayList<BabelSynsetIDRelation>) synset.getEdges(BabelPointer.HOLONYM_MEMBER));
 
 
-        //Sense
-        //Synonym
-        //HyperHypo
-        //Gloss
-        //Semantic
+        ArrayList<BabelSynsetIDRelation> edges = (ArrayList<BabelSynsetIDRelation>) synset.getEdges(BabelPointer.HYPERNYM);
+        BabelSynsetIDRelation cH = edges.get(0);
+        String entity = "bn:00031027n";
+        Integer i = 0;
 
-        for (BabelSynsetIDRelation edge : synset.getEdges()) {
-            if (edge.getLanguage() == Language.EN && edge.getWeight() != 0.0) {
+        do {
 
-                t.returnBow().add(edge);
+            i++;
 
-                //System.out.println(synset.getId() + "\t" + synset.getMainSense(Language.EN).getLemma() + " - " + edge.getPointer() + " - " + edge.getBabelSynsetIDTarget() + " - " + edge.getLanguage());
+            System.out.println(cH.getBabelSynsetIDTarget().toString());
+            cH = ProcessController.bn.getSynset(cH.getBabelSynsetIDTarget()).getEdges(BabelPointer.HYPERNYM).get(0);
+            t.returnBow().add(cH);
 
-                //Add second level edges
-                //for (BabelSynsetIDRelation subedge : ProcessController.bn.getSynset(new BabelSynsetID(edge.getBabelSynsetIDTarget().toString())).getEdges()) {
-                  //  if (subedge.getLanguage() == Language.EN && subedge.getWeight() != 0.0) {
-
-                    //    t.returnBow().add(subedge);
-
-                      //  System.out.println(synset.getId() + "\t" + synset.getMainSense(Language.EN).getLemma() + " - " + subedge.getPointer() + " - " + subedge.getBabelSynsetIDTarget() + " - " + subedge.getLanguage());
-
-                    //}
+        } while (!cH.getBabelSynsetIDTarget().toString().equals(entity));
 
 
-                    //  System.out.println(edge);
-                    //Add second level relations
-                    //added.addAll((ArrayList<BabelSynsetIDRelation>) ProcessController.bn.getSynset(new BabelSynsetID(edge.getBabelSynsetIDTarget().toString())).getEdges());
-                    //}
+        //for (BabelSynsetIDRelation edge : synset.getEdges(BabelPointer.HYPERNYM)) {
+            //if (edge.getLanguage() == Language.EN && edge.getWeight() != 0.0) {
 
-                    //System.out.println(synset.getId() + "\t" + synset.getMainSense(Language.EN).getLemma() + " - "+ edge.getPointer() + " - "+ edge.getBabelSynsetIDTarget() + " - "+ edge.getLanguage());
+            //System.out.println(edge);
+
+            //t.returnBow().add(edge);
+
+            //System.out.println(synset.getId() + "\t" + synset.getMainSense(Language.EN).getLemma() + " - " + edge.getPointer() + " - " + edge.getBabelSynsetIDTarget() + " - " + edge.getLanguage());
+
+            //Add second level edges
+            //for (BabelSynsetIDRelation subedge : ProcessController.bn.getSynset(new BabelSynsetID(edge.getBabelSynsetIDTarget().toString())).getEdges()) {
+            //  if (subedge.getLanguage() == Language.EN && subedge.getWeight() != 0.0) {
+
+            //    t.returnBow().add(subedge);
+
+            //  System.out.println(synset.getId() + "\t" + synset.getMainSense(Language.EN).getLemma() + " - " + subedge.getPointer() + " - " + subedge.getBabelSynsetIDTarget() + " - " + subedge.getLanguage());
+
+            //}
 
 
-                }
+            //  System.out.println(edge);
+            //Add second level relations
+            //added.addAll((ArrayList<BabelSynsetIDRelation>) ProcessController.bn.getSynset(new BabelSynsetID(edge.getBabelSynsetIDTarget().toString())).getEdges());
+            //}
+
+            //System.out.println(synset.getId() + "\t" + synset.getMainSense(Language.EN).getLemma() + " - "+ edge.getPointer() + " - "+ edge.getBabelSynsetIDTarget() + " - "+ edge.getLanguage());
 
 
-                //for(String form : synset.getOtherForms(Language.EN)) {
-                //  System.out.println(synset.getId()+"\t"+synset.getMainSense(Language.EN).getLemma()+" - "
-                //        + form);
-            }
+            //}
 
-            //t.addBow(added);
 
-      //  }
-    }
+            //for(String form : synset.getOtherForms(Language.EN)) {
+            //  System.out.println(synset.getId()+"\t"+synset.getMainSense(Language.EN).getLemma()+" - "
+            //        + form);
+        }
+
+        //t.addBow(added);
+
+        //  }
+
 
 }
 

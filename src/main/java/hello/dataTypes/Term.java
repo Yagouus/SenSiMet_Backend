@@ -32,10 +32,10 @@ public class Term {
     public void setString(String string) {
         this.string = string;
     }
-
     public void setBfy(SemanticAnnotation bfy) {
         this.bfy = bfy;
     }
+
 
     /*public void setCore(CoreLabel core) {
         this.core = core;

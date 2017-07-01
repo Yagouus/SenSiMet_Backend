@@ -49,4 +49,24 @@ public class Result {
     public ArrayList<Relation> getRelationsArrayList() {
         return relationsArrayList;
     }
+
+
+    public void addRelation(Relation r) {
+        if (this.getRelationsArrayList().size() > 0) {
+            for (Relation e : this.getRelationsArrayList()) {
+                System.out.println("OVERRIDE");
+                if (e.getT1().equals(r.getT1()) || e.getT2().equals(r.getT2()) || e.getT2().equals(r.getT1()) || e.getT1().equals(r.getT2())) {
+                    if (e.getMetric() < r.getMetric()) {
+                        this.getRelationsArrayList().remove(this.getRelationsArrayList().indexOf(e));
+                        this.getRelationsArrayList().add(r);
+                        return;
+                    }
+                }
+            }
+        } else {
+            this.getRelationsArrayList().add(r);
+        }
+
+
+    }
 }
