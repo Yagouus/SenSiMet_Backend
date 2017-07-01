@@ -4,15 +4,15 @@ import hello.analysis.SentenceAnalyser;
 import hello.dataTypes.*;
 
 
+import hello.parser.parserCSV;
 import it.uniroma1.lcl.babelnet.BabelNet;
 import it.uniroma1.lcl.babelnet.InvalidBabelSynsetIDException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -37,10 +37,17 @@ public class ProcessController {
     }
 
     //Accepts a file and saves it to the server
-    @RequestMapping("/fileUpload")
-    public ResponseEntity handleFileUpload(@RequestParam("file") MultipartFile file) {
+    @CrossOrigin
+    @RequestMapping("/processFile")
+    public Result processFile(@RequestParam("file") MultipartFile file) throws InvalidBabelSynsetIDException, IOException {
+
+        //Save file
         storageService.store(file);
-        return ResponseEntity.status(HttpStatus.OK).build();
+
+        //Extract sentences
+        ArrayList<String> sentences = parserCSV.Stringify(storageService.load(file.getOriginalFilename()).toString());
+
+        return SentenceAnalyser.analyse(sentences.get(0), sentences.get(1));
     }
 
     //Lists all files in the server
