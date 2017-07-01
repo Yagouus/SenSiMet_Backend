@@ -1,7 +1,5 @@
 package hello.dataTypes;
 
-import edu.stanford.nlp.ling.CoreLabel;
-import edu.stanford.nlp.semgraph.semgrex.SemgrexMatcher;
 import it.uniroma1.lcl.babelfy.commons.annotation.SemanticAnnotation;
 import it.uniroma1.lcl.babelnet.BabelSynset;
 import it.uniroma1.lcl.babelnet.BabelSynsetIDRelation;
@@ -18,7 +16,7 @@ public class Term {
     private SemanticAnnotation bfy;     //Bfy disambiguation
     private BabelSynset bnt;            //Babelnet synset
     private ArrayList<BabelSynsetIDRelation> bow = new ArrayList<>(); //Related babelnet synsets
-    private CoreLabel core;            //CoreNLP token
+    //private CoreLabel core;            //CoreNLP token
     private BabelPOS POS;
 
     //CONSTRUCTOR
@@ -39,9 +37,9 @@ public class Term {
         this.bfy = bfy;
     }
 
-    public void setCore(CoreLabel core) {
+    /*public void setCore(CoreLabel core) {
         this.core = core;
-    }
+    }*/
 
     public void setBnt(BabelSynset bnt) {
         this.bnt = bnt;

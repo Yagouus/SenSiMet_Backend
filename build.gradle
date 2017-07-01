@@ -26,9 +26,9 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
-    compile('org.apache.opennlp:opennlp-tools:1.6.0')
-    compile('edu.stanford.nlp:stanford-corenlp:3.7.0')
+
+    //compile('org.apache.opennlp:opennlp-tools:1.6.0')
+    //compile('edu.stanford.nlp:stanford-corenlp:3.7.0')
     compile files('lib/Babelfy/lib/babelfy-commons-1.0.jar',
             'lib/Babelfy/lib/commons-collections-3.2.jar',
             'lib/Babelfy/lib/commons-configuration-1.5.jar',

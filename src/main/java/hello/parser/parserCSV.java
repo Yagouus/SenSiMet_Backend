@@ -2,9 +2,7 @@ package hello.parser;
 
 
 import hello.dataTypes.DataSet;
-import opennlp.tools.tokenize.Tokenizer;
-import opennlp.tools.tokenize.TokenizerME;
-import opennlp.tools.tokenize.TokenizerModel;
+
 
 import java.io.*;
 
@@ -37,7 +35,7 @@ public class parserCSV {
         return null;
     }
 
-    public static void Tokenize(DataSet Data) {
+   /* public static void Tokenize(DataSet Data) {
 
         //Initialize OpenNLP tokenizer
         InputStream is = null;
@@ -55,6 +53,6 @@ public class parserCSV {
         }
 
         Tokenizer tokenizer = new TokenizerME(model);
-    }
+    }*/
 
 }
