@@ -61,7 +61,8 @@ public class Result {
         if (this.getRelationsArrayList().size() > 0) {
             for (Relation e : this.getRelationsArrayList()) {
                 if (e.getT1().equals(r.getT1()) || e.getT2().equals(r.getT2()) || e.getT2().equals(r.getT1()) || e.getT1().equals(r.getT2())) {
-                    if (e.getMetric() < r.getMetric()) {
+                    System.out.println("TERM REPEATS");
+                    if (e.getMetric() < r.getMetric() || e.getPath() < r.getPath()) {
                         this.getRelationsArrayList().remove(this.getRelationsArrayList().indexOf(e));
                         this.getRelationsArrayList().add(r);
                         return;

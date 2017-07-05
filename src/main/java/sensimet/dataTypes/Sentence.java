@@ -1,5 +1,6 @@
 package sensimet.dataTypes;
 
+import it.uniroma1.lcl.jlt.util.Language;
 import sensimet.RESTController;
 import it.uniroma1.lcl.babelfy.commons.BabelfyParameters;
 import it.uniroma1.lcl.babelfy.core.Babelfy;
@@ -95,6 +96,8 @@ public class Sentence {
 
                 BabelSynset synset = RESTController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
                 System.out.println("MAIN SENSE: " + synset.getMainSense(EN));
+                terms.get(frag).setSense(synset.getMainSense(EN));
+                terms.get(frag).setGloss(synset.getMainGloss(EN));
                 terms.get(frag).setBnt(synset);
                 terms.get(frag).setPOS(synset.getPOS());
                 System.out.println("POS: " + terms.get(frag).getPOS());
@@ -182,6 +185,7 @@ public class Sentence {
         String entity = "bn:00031027n";
         Integer i = 0;
 
+        //Add hypernyms
         do {
             i++;
 
@@ -192,9 +196,18 @@ public class Sentence {
             }else{
                 break;
             }
-            t.returnBow().add(cH);
+            t.returnHypers().add(cH);
 
         } while (!cH.getBabelSynsetIDTarget().toString().equals(entity));
+
+        //Add everything to bow
+        edges = (ArrayList<BabelSynsetIDRelation>) synset.getEdges();
+        for(BabelSynsetIDRelation r : edges){
+            if(r.getLanguage().equals(Language.EN) && r.getWeight() > 0){
+                t.returnBow().add(r);
+            }
+        }
+        //t.setBow((ArrayList<BabelSynsetIDRelation>) synset.getEdges());
 
     }
 

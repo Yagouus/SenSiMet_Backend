@@ -1,8 +1,10 @@
 package sensimet.dataTypes;
 
 import it.uniroma1.lcl.babelfy.commons.annotation.SemanticAnnotation;
+import it.uniroma1.lcl.babelnet.BabelSense;
 import it.uniroma1.lcl.babelnet.BabelSynset;
 import it.uniroma1.lcl.babelnet.BabelSynsetIDRelation;
+import it.uniroma1.lcl.babelnet.data.BabelGloss;
 import it.uniroma1.lcl.babelnet.data.BabelPOS;
 
 import java.util.ArrayList;
@@ -21,7 +23,10 @@ public class Term {
     private SemanticAnnotation bfy;     //Bfy disambiguation
     private BabelSynset bnt;            //Babelnet synset
     private ArrayList<BabelSynsetIDRelation> bow = new ArrayList<>(); //Related babelnet synsets
+    private ArrayList<BabelSynsetIDRelation> hypers = new ArrayList<>();
     private BabelPOS POS;
+    private BabelSense sense;
+    private BabelGloss gloss;
 
     //Constructor
     public Term(String word) {
@@ -44,6 +49,12 @@ public class Term {
     public void setPOS(BabelPOS POS) {
         this.POS = POS;
     }
+    public void setHypers(ArrayList<BabelSynsetIDRelation> hypers) {this.hypers = hypers;}
+    public void setSense(BabelSense sense) { this.sense = sense; }
+
+    public void setGloss(BabelGloss gloss) {
+        this.gloss = gloss;
+    }
 
     //Getters
     public String getString() {
@@ -55,6 +66,11 @@ public class Term {
     public BabelPOS getPOS() {
         return POS;
     }
+    public BabelSense getSense() {return sense;}
+
+    public BabelGloss getGloss() {
+        return gloss;
+    }
 
     //Custom methods
     public void addBow(ArrayList<BabelSynsetIDRelation> bow) {
@@ -63,9 +79,13 @@ public class Term {
     public ArrayList<BabelSynsetIDRelation> returnBow(){
         return this.bow;
     }
+    public ArrayList<BabelSynsetIDRelation> returnHypers(){
+        return this.hypers;
+    }
     public BabelSynset returnBnt(){
         return this.bnt;
     }
+
 
     @Override
     public String toString() {

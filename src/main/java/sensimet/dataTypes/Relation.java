@@ -12,6 +12,7 @@ public class Relation {
     private Term t1;
     private Term t2;
     private float metric;
+    private float path;
     private ArrayList<BabelSynsetIDRelation> cWords = new ArrayList<>();
     private ArrayList<BabelSynsetIDRelation>  tBow = new ArrayList<>();
 
@@ -31,7 +32,7 @@ public class Relation {
     public void setcWords(ArrayList<BabelSynsetIDRelation> cWords) {
         this.cWords = cWords;
     }
-
+    public void setPath(float path) { this.path = path; }
 
     //Getters
     public ArrayList<BabelSynsetIDRelation> gettBow() {
@@ -46,9 +47,6 @@ public class Relation {
     public Term getT2() {
         return t2;
     }
-    public float getMetric() {
-        return metric;
-    }
-
-
+    public float getMetric() {return metric;}
+    public float getPath() {return path;}
 }

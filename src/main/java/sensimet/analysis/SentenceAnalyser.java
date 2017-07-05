@@ -35,7 +35,7 @@ public class SentenceAnalyser {
 
         //Apply bow metric
         bowMetric(S1, S2, result);
-        //pathLength(S1, S2, result);
+        pathLength(S1, S2, result);
 
         return result;
     }
@@ -55,13 +55,6 @@ public class SentenceAnalyser {
                 //If the terms are the same POS
                 if (t.getPOS() != null && u.getPOS() != null && t.getPOS() == u.getPOS()) {
 
-                    //If they are the same term
-                    if (t.getBfy().getBabelSynsetID().equals(u.getBfy().getBabelSynsetID())) {
-                        metric = 1;
-                        System.out.println("RESULT: " + metric);
-                        return;
-                    }
-
                     //Number of common terms
                     int c = 0;
 
@@ -72,6 +65,17 @@ public class SentenceAnalyser {
                     Relation r = new Relation();
                     r.setT1(t);
                     r.setT2(u);
+
+
+                    //If they are the same term
+                    if (t.getBfy().getBabelSynsetID().equals(u.getBfy().getBabelSynsetID()) || t.getString().equals(u.getString())) {
+                        metric = 1;
+                        System.out.println("RESULT: " + metric);
+                        //Add result to relations
+                        r.setMetric(metric);
+                        result.addRelation(r);
+                        continue;
+                    }
 
                     //For each connected node in term 1
                     for (BabelSynsetIDRelation edge : t.returnBow()) {
@@ -138,7 +142,7 @@ public class SentenceAnalyser {
                     float j = 0;
 
                     //Sout
-                    System.out.println("COMPARE: " + t.getString() + " - " + u.getString());
+                    //System.out.println("COMPARE: " + t.getString() + " - " + u.getString());
 
                     //Initialize relation
                     Relation r = new Relation();
@@ -146,13 +150,13 @@ public class SentenceAnalyser {
                     r.setT2(u);
 
                     //For each connected node in term 1
-                    for (BabelSynsetIDRelation edge : t.returnBow()) {
+                    for (BabelSynsetIDRelation edge : t.returnHypers()) {
 
                         i++;
                         j=0;
 
                         //For each connected node in term 2
-                        for (BabelSynsetIDRelation edge2 : u.returnBow()) {
+                        for (BabelSynsetIDRelation edge2 : u.returnHypers()) {
 
                             j++;
 
@@ -163,9 +167,9 @@ public class SentenceAnalyser {
                                 float sum = i+j;
                                 metric = 1 / sum;
                                 //Add result to relations
-                                r.setMetric(metric);
+                                r.setPath(metric);
                                 result.addRelation(r);
-                                System.out.println("METRIC: " + metric);
+                                System.out.println("PathLength: " + metric);
                                 return;
                             }
                             //r.gettBow().add(edge2);
@@ -174,7 +178,7 @@ public class SentenceAnalyser {
 
                     //Calculate result
                     float common = (c * 2);
-                    float dif = (t.returnBow().size() + u.returnBow().size());
+                    float dif = (t.returnHypers().size() + u.returnHypers().size());
                     metric = common / dif;
 
                     /*if(u.relationsContain(t) || t.relationsContain(u)){
@@ -183,7 +187,7 @@ public class SentenceAnalyser {
 
                     System.out.println("SHARED: " + common);
                     System.out.println("SIZE: " + (t.returnBow().size() + u.returnBow().size()));
-                    System.out.println("RESULT: " + c + " / " + (t.returnBow().size() + u.returnBow().size()) + " = " + metric);
+                    System.out.println("RESULT: " + c + " / " + (t.returnHypers().size() + u.returnHypers().size()) + " = " + metric);
 
 
                     //Add result to relations
