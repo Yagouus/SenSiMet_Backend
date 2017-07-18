@@ -96,10 +96,10 @@ public class Sentence {
 
                 BabelSynset synset = RESTController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
                 System.out.println("MAIN SENSE: " + synset.getMainSense(EN));
-                terms.get(frag).setSense(synset.getMainSense(EN));
-                terms.get(frag).setGloss(synset.getMainGloss(EN));
+                terms.get(frag).setSense(synset.getMainSense(EN).toString());
+                terms.get(frag).setGloss(synset.getMainGloss(EN).toString());
                 terms.get(frag).setBnt(synset);
-                terms.get(frag).setPOS(synset.getPOS());
+                terms.get(frag).setPOS(synset.getPOS().toString());
                 System.out.println("POS: " + terms.get(frag).getPOS());
 
                 getEdges(terms.get(frag));
@@ -137,9 +137,10 @@ public class Sentence {
 
                 BabelSynset synset = RESTController.bn.getSynset(new BabelSynsetID(annotation.getBabelSynsetID()));
                 System.out.println("MAIN SENSE: " + synset.getMainSense(EN));
-
+                terms.get(frag).setSense(synset.getMainSense(EN).toString());
+                terms.get(frag).setGloss(synset.getMainGloss(EN).toString());
                 terms.get(frag).setBnt(synset);
-                terms.get(frag).setPOS(synset.getPOS());
+                terms.get(frag).setPOS(synset.getPOS().toString());
                 System.out.println("POS: " + terms.get(frag).getPOS());
 
                 getEdges(terms.get(frag));

@@ -10,7 +10,7 @@ import it.uniroma1.lcl.babelnet.InvalidBabelSynsetIDException;
 import java.io.IOException;
 
 /**
- Author: Yago Fontenla Seco
+ * Author: Yago Fontenla Seco
  **/
 
 public class SentenceAnalyser {
@@ -24,16 +24,11 @@ public class SentenceAnalyser {
         //Create result
         Result result = new Result(S1, S2);
 
-        //POS tag the sentence
-        //S1.Tokenize();
-        //S2.Tokenize();
-
         //Disambiguate the terms in the sentences
         S1.Disambiguate();
         S2.Disambiguate();
 
-
-        //Apply bow metric
+        //Apply metrics
         bowMetric(S1, S2, result);
         pathLength(S1, S2, result);
 
@@ -41,6 +36,8 @@ public class SentenceAnalyser {
     }
 
     private static void bowMetric(Sentence S1, Sentence S2, Result result) {
+
+        System.out.println("\n----DICE----");
 
         //Final result
         float metric;
@@ -53,7 +50,7 @@ public class SentenceAnalyser {
             for (Term u : S2.getTerms()) {
 
                 //If the terms are the same POS
-                if (t.getPOS() != null && u.getPOS() != null && t.getPOS() == u.getPOS()) {
+                if (t.getPOS() != null && u.getPOS() != null && t.getPOS().equals(u.getPOS())) {
 
                     //Number of common terms
                     int c = 0;
@@ -115,7 +112,10 @@ public class SentenceAnalyser {
         }
     }
 
-    private static void pathLength(Sentence S1, Sentence S2, Result result){
+    private static void pathLength(Sentence S1, Sentence S2, Result result) {
+
+        System.out.println("\n----PATH LENGTH----");
+
         //Final result
         float metric;
 
@@ -127,13 +127,13 @@ public class SentenceAnalyser {
             for (Term u : S2.getTerms()) {
 
                 //If the terms are the same POS
-                if (t.getPOS() != null && u.getPOS() != null && t.getPOS() == u.getPOS()) {
+                if (t.getPOS() != null && u.getPOS() != null && t.getPOS().equals(u.getPOS())) {
 
                     //If they are the same term
                     if (t.getBfy().getBabelSynsetID().equals(u.getBfy().getBabelSynsetID())) {
                         metric = 1;
                         System.out.println("RESULT: " + metric);
-                        return;
+                        continue;
                     }
 
                     //Number of common terms
@@ -142,7 +142,7 @@ public class SentenceAnalyser {
                     float j = 0;
 
                     //Sout
-                    //System.out.println("COMPARE: " + t.getString() + " - " + u.getString());
+                    System.out.println("COMPARE: " + t.getString() + " - " + u.getString());
 
                     //Initialize relation
                     Relation r = new Relation();
@@ -153,7 +153,7 @@ public class SentenceAnalyser {
                     for (BabelSynsetIDRelation edge : t.returnHypers()) {
 
                         i++;
-                        j=0;
+                        j = 0;
 
                         //For each connected node in term 2
                         for (BabelSynsetIDRelation edge2 : u.returnHypers()) {
@@ -164,35 +164,15 @@ public class SentenceAnalyser {
                                 System.out.println("COMMON TERM: " + edge + " - " + edge2);
                                 System.out.println("Distance t1: " + i);
                                 System.out.println("Distance t2: " + j);
-                                float sum = i+j;
+                                float sum = i + j;
                                 metric = 1 / sum;
                                 //Add result to relations
                                 r.setPath(metric);
                                 result.addRelation(r);
                                 System.out.println("PathLength: " + metric);
-                                return;
                             }
-                            //r.gettBow().add(edge2);
                         }
                     }
-
-                    //Calculate result
-                    float common = (c * 2);
-                    float dif = (t.returnHypers().size() + u.returnHypers().size());
-                    metric = common / dif;
-
-                    /*if(u.relationsContain(t) || t.relationsContain(u)){
-                        metric = 1;
-                    }*/
-
-                    System.out.println("SHARED: " + common);
-                    System.out.println("SIZE: " + (t.returnBow().size() + u.returnBow().size()));
-                    System.out.println("RESULT: " + c + " / " + (t.returnHypers().size() + u.returnHypers().size()) + " = " + metric);
-
-
-                    //Add result to relations
-                    r.setMetric(metric);
-                    result.addRelation(r);
 
                 }
             }

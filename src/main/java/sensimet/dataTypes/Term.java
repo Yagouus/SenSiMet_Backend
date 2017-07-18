@@ -24,9 +24,9 @@ public class Term {
     private BabelSynset bnt;            //Babelnet synset
     private ArrayList<BabelSynsetIDRelation> bow = new ArrayList<>(); //Related babelnet synsets
     private ArrayList<BabelSynsetIDRelation> hypers = new ArrayList<>();
-    private BabelPOS POS;
-    private BabelSense sense;
-    private BabelGloss gloss;
+    private String POS;
+    private String sense;
+    private String gloss;
 
     //Constructor
     public Term(String word) {
@@ -46,13 +46,12 @@ public class Term {
     public void setBow(ArrayList<BabelSynsetIDRelation> bow) {
         this.bow = bow;
     }
-    public void setPOS(BabelPOS POS) {
+    public void setPOS(String POS) {
         this.POS = POS;
     }
     public void setHypers(ArrayList<BabelSynsetIDRelation> hypers) {this.hypers = hypers;}
-    public void setSense(BabelSense sense) { this.sense = sense; }
-
-    public void setGloss(BabelGloss gloss) {
+    public void setSense(String sense) { this.sense = sense; }
+    public void setGloss(String gloss) {
         this.gloss = gloss;
     }
 
@@ -63,12 +62,11 @@ public class Term {
     public SemanticAnnotation getBfy() {
         return bfy;
     }
-    public BabelPOS getPOS() {
+    public String getPOS() {
         return POS;
     }
-    public BabelSense getSense() {return sense;}
-
-    public BabelGloss getGloss() {
+    public String getSense() {return sense;}
+    public String getGloss() {
         return gloss;
     }
 

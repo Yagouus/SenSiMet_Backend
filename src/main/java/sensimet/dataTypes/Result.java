@@ -57,21 +57,31 @@ public class Result {
     //Custom methods
     public void addRelation(Relation r) {
 
-        boolean c = false;
+
+        //If relations exist
         if (this.getRelationsArrayList().size() > 0) {
+
+            //For each relation
             for (Relation e : this.getRelationsArrayList()) {
+
+                //If any node is related
                 if (e.getT1().equals(r.getT1()) || e.getT2().equals(r.getT2()) || e.getT2().equals(r.getT1()) || e.getT1().equals(r.getT2())) {
                     System.out.println("TERM REPEATS");
+
+                    //If relation is better
                     if (e.getMetric() < r.getMetric() || e.getPath() < r.getPath()) {
+                        System.out.println("BETTER RESULT");
                         this.getRelationsArrayList().remove(this.getRelationsArrayList().indexOf(e));
                         this.getRelationsArrayList().add(r);
                         return;
+                    }else{
+                        return;
                     }
                 }
+
             }
 
             this.getRelationsArrayList().add(r);
-            return;
 
         } else {
             this.getRelationsArrayList().add(r);
