@@ -11,8 +11,8 @@ public class Relation {
 
     private Term t1;
     private Term t2;
-    private float metric;
-    private float path;
+    private float metric = 0;
+    private float path = 0;
     private ArrayList<BabelSynsetIDRelation> cWords = new ArrayList<>();
     private ArrayList<BabelSynsetIDRelation>  tBow = new ArrayList<>();
 

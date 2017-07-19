@@ -3,7 +3,7 @@ package sensimet.dataTypes;
 import java.util.ArrayList;
 
 /**
-Author: Yago Fontenla Seco
+ * Author: Yago Fontenla Seco
  **/
 
 public class Result {
@@ -13,10 +13,11 @@ public class Result {
     ArrayList<Relation> relationsArrayList = new ArrayList<>();
 
     //Constructors
-    public Result(){
+    public Result() {
         System.out.println("Create empty result");
     }
-    public Result(Sentence s1, Sentence s2){
+
+    public Result(Sentence s1, Sentence s2) {
         System.out.println("Create empty result");
         setS1(s1);
         setS2(s2);
@@ -57,6 +58,10 @@ public class Result {
     //Custom methods
     public void addRelation(Relation r) {
 
+        boolean f = false;
+        boolean cont = false;
+        ArrayList<Relation> c = (ArrayList<Relation>) this.getRelationsArrayList().clone();
+
 
         //If relations exist
         if (this.getRelationsArrayList().size() > 0) {
@@ -64,29 +69,52 @@ public class Result {
             //For each relation
             for (Relation e : this.getRelationsArrayList()) {
 
-                //If any node is related
-                if (e.getT1().equals(r.getT1()) || e.getT2().equals(r.getT2()) || e.getT2().equals(r.getT1()) || e.getT1().equals(r.getT2())) {
-                    System.out.println("TERM REPEATS");
+                //Existing relations
+                if (e.getT1().equals(r.getT1()) && e.getT2().equals(r.getT2())) {
+                    System.out.println("EXISTING RELATION");
+                    if (e.getMetric() < r.getMetric()) {
+                        e.setMetric(r.getMetric());
+                        return;
+                    } else if (e.getPath() < r.getPath()) {
+                        e.setPath(r.getPath());
+                        return;
+                    } else {
+                        return;
+                    }
+                }
 
+                //If any node is related
+                if (e.getT1().equals(r.getT1()) || e.getT2().equals(r.getT2())) {
+                    System.out.println("TERM REPEATS");
+                    cont = true;
                     //If relation is better
                     if (e.getMetric() < r.getMetric() || e.getPath() < r.getPath()) {
-                        System.out.println("BETTER RESULT");
-                        this.getRelationsArrayList().remove(this.getRelationsArrayList().indexOf(e));
-                        this.getRelationsArrayList().add(r);
-                        return;
-                    }else{
-                        return;
+                        if (!f) {
+                            System.out.println("BETTER RESULT");
+                            System.out.println("REMOVE: " + e.getT1() + " - " + e.getT2());
+                            c.remove(c.indexOf(e));
+                            c.add(r);
+                            f = true;
+                        } else {
+                            System.out.println("REMOVE: " + e.getT1() + " - " + e.getT2());
+                            c.remove(c.indexOf(e));
+                        }
+                        //return;
                     }
                 }
 
             }
 
-            this.getRelationsArrayList().add(r);
+            this.setRelationsArrayList(c);
+
+            if (!cont) {
+                this.getRelationsArrayList().add(r);
+            }
+
 
         } else {
             this.getRelationsArrayList().add(r);
         }
-
 
     }
 }

@@ -7,12 +7,14 @@ import it.uniroma1.lcl.babelfy.core.Babelfy;
 import it.uniroma1.lcl.babelfy.commons.annotation.SemanticAnnotation;
 import it.uniroma1.lcl.babelnet.*;
 import it.uniroma1.lcl.babelnet.data.BabelPointer;
+
 import java.io.IOException;
 import java.util.*;
+
 import static it.uniroma1.lcl.jlt.util.Language.*;
 
 /**
- Author: Yago Fontenla Seco
+ * Author: Yago Fontenla Seco
  **/
 
 public class Sentence {
@@ -36,6 +38,7 @@ public class Sentence {
     public String getString() {
         return string;
     }
+
     public ArrayList<Term> getTerms() {
 
         //Result Array
@@ -165,6 +168,7 @@ public class Sentence {
 
 
     }
+
     private void getEdges(Term t) throws InvalidBabelSynsetIDException, IOException {
         BabelSynset synset = null;
 
@@ -182,29 +186,36 @@ public class Sentence {
 
         ArrayList<BabelSynsetIDRelation> edges = (ArrayList<BabelSynsetIDRelation>) synset.getEdges(BabelPointer.HYPERNYM);
         ArrayList<BabelSynsetIDRelation> cedges = new ArrayList<>();
-        BabelSynsetIDRelation cH = edges.get(0);
+        BabelSynsetIDRelation cH = null;
+        if (edges.size() > 0) {
+            cH = edges.get(0);
+        }
+
         String entity = "bn:00031027n";
         Integer i = 0;
 
         //Add hypernyms
-        do {
-            i++;
+        if (cH != null) {
 
-            System.out.println(cH.getBabelSynsetIDTarget().toString());
-            cedges = (ArrayList<BabelSynsetIDRelation>) RESTController.bn.getSynset(cH.getBabelSynsetIDTarget()).getEdges(BabelPointer.HYPERNYM);
-            if(cedges.size() > 0){
-                cH = cedges.get(0);
-            }else{
-                break;
-            }
-            t.returnHypers().add(cH);
+            do {
+                i++;
 
-        } while (!cH.getBabelSynsetIDTarget().toString().equals(entity));
+                System.out.println(cH.getBabelSynsetIDTarget().toString());
+                cedges = (ArrayList<BabelSynsetIDRelation>) RESTController.bn.getSynset(cH.getBabelSynsetIDTarget()).getEdges(BabelPointer.HYPERNYM);
+                if (cedges.size() > 0) {
+                    cH = cedges.get(0);
+                } else {
+                    break;
+                }
+                t.returnHypers().add(cH);
+
+            } while (!cH.getBabelSynsetIDTarget().toString().equals(entity));
+        }
 
         //Add everything to bow
         edges = (ArrayList<BabelSynsetIDRelation>) synset.getEdges();
-        for(BabelSynsetIDRelation r : edges){
-            if(r.getLanguage().equals(Language.EN) && r.getWeight() > 0){
+        for (BabelSynsetIDRelation r : edges) {
+            if (r.getLanguage().equals(Language.EN) && r.getWeight() > 0) {
                 t.returnBow().add(r);
             }
         }

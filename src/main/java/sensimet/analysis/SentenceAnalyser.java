@@ -121,18 +121,29 @@ public class SentenceAnalyser {
 
         //Compare terms
         //For terms in sentence 1
-        for (Term t : S1.getTerms()) {
+        t1: for (Term t : S1.getTerms()) {
 
             //For terms in sentence 2
-            for (Term u : S2.getTerms()) {
+            t2: for (Term u : S2.getTerms()) {
 
                 //If the terms are the same POS
                 if (t.getPOS() != null && u.getPOS() != null && t.getPOS().equals(u.getPOS())) {
 
+                    //Sout
+                    System.out.println("-COMPARE: " + t.getString() + " - " + u.getString());
+
+                    //Initialize relation
+                    Relation r = new Relation();
+                    r.setT1(t);
+                    r.setT2(u);
+
                     //If they are the same term
                     if (t.getBfy().getBabelSynsetID().equals(u.getBfy().getBabelSynsetID())) {
                         metric = 1;
-                        System.out.println("RESULT: " + metric);
+                        //Add result to relations
+                        r.setPath(metric);
+                        result.addRelation(r);
+                        System.out.println("PathLength: " + metric);
                         continue;
                     }
 
@@ -141,22 +152,14 @@ public class SentenceAnalyser {
                     float i = 0;
                     float j = 0;
 
-                    //Sout
-                    System.out.println("COMPARE: " + t.getString() + " - " + u.getString());
-
-                    //Initialize relation
-                    Relation r = new Relation();
-                    r.setT1(t);
-                    r.setT2(u);
-
                     //For each connected node in term 1
-                    for (BabelSynsetIDRelation edge : t.returnHypers()) {
+                    h1: for (BabelSynsetIDRelation edge : t.returnHypers()) {
 
                         i++;
                         j = 0;
 
                         //For each connected node in term 2
-                        for (BabelSynsetIDRelation edge2 : u.returnHypers()) {
+                        h2: for (BabelSynsetIDRelation edge2 : u.returnHypers()) {
 
                             j++;
 
@@ -166,10 +169,12 @@ public class SentenceAnalyser {
                                 System.out.println("Distance t2: " + j);
                                 float sum = i + j;
                                 metric = 1 / sum;
+                                System.out.println("PathLength: " + metric);
                                 //Add result to relations
                                 r.setPath(metric);
                                 result.addRelation(r);
-                                System.out.println("PathLength: " + metric);
+
+                                break h1;
                             }
                         }
                     }
